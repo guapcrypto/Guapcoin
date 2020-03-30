@@ -42,13 +42,23 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
-    (0, uint256("0x000002563024b106ca6630ff598e3016fc218f6c5f21366623bce0e75bfc2064"));
+    (0, uint256("0x000002563024b106ca6630ff598e3016fc218f6c5f21366623bce0e75bfc2064"))
+    (1, uint256("0x0e2fab8d31e8d8634ca0362243de7ca83eac04ba1ced59f1ff99e9a6d644bf2a"))
+    (3767, uint256("0x1f74d425ad92af620d08705d330e24b9da7b58b8c1c55575b375a9d4f14b1cec"))
+    (14376, uint256("0xf47349ad64bbcfe2e352bc895beb16da44e80ed1e1d7717619e67b0658166735"))
+    (35401, uint256("0x3a43fb32b42c6888f729329907a0ec34d8738a9510519c5b23978b5906f56d44"))
+    (52349, uint256("0x82eeba69db87775a2803925faef46ece52914545362a11cd9c3a387ceb042275"))
+    (103425, uint256("0x8bab25a3273ac98ef501c2f04257ef0a85eeac0aaf0f07379397e735d59325df"))
+    (176291, uint256("0x23973a4d350efed956cd680ebe0dde3ed1472ea1486e4a7876d09651bb9a8642"))
+    (267328, uint256("0x5acfb88f4d06633b2c55a0e0ca1a8f7d1e8537a64e3cc715c41b06d959dcb31b"))
+    (320745, uint256("0x1c287911ae3816071234696cc11fe379730c9edd40c0f86ef5845004ca362563"))
+    (355009, uint256("0xa01206f1d04bd976708436637b6e99d2d3f1fc7cfed0c9a9204a9b0f1e1b2c57"));
 	
 
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1563817096, // * UNIX timestamp of last checkpoint block
-    0,          // * total number of transactions between genesis and last checkpoint
+    1585546611, // * UNIX timestamp of last checkpoint block
+    710893,          // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
     2000        // * estimated number of transactions per day after checkpoint
 };
@@ -116,6 +126,25 @@ public:
         hashGenesisBlock = genesis.GetHash();
         assert(hashGenesisBlock == uint256("0x000002563024b106ca6630ff598e3016fc218f6c5f21366623bce0e75bfc2064"));
         assert(genesis.hashMerkleRoot == uint256("0xb693cbb2fed7b4fbab60499202c45bf8dce6d839c2938ad0132c29dd16daa014"));
+
+		vSeeds.push_back(CDNSSeedData("0", "159.65.221.180"));     
+        vSeeds.push_back(CDNSSeedData("1", "209.250.250.121"));     
+		vSeeds.push_back(CDNSSeedData("2", "2001:19f0:5001:331b:5400:02ff:fea5:3f49"));     
+        vSeeds.push_back(CDNSSeedData("3", "136.244.112.117"));     
+		vSeeds.push_back(CDNSSeedData("4", "2001:19f0:6801:fcb:5400:02ff:fea5:3f5f"));     
+        vSeeds.push_back(CDNSSeedData("5", "199.247.20.128"));     
+		vSeeds.push_back(CDNSSeedData("6", "2001:19f0:6c01:27ea:5400:02ff:fea5:3f65"));     
+        vSeeds.push_back(CDNSSeedData("7", "78.141.203.208"));     
+		vSeeds.push_back(CDNSSeedData("8", "2001:19f0:7400:8dfc:5400:02ff:fea5:3f81"));     
+        vSeeds.push_back(CDNSSeedData("9", "155.138.140.38"));     
+		vSeeds.push_back(CDNSSeedData("10", "2001:19f0:b001:7d:5400:02ff:fea5:3f89"));     
+        vSeeds.push_back(CDNSSeedData("11", "45.76.199.11"));     
+		vSeeds.push_back(CDNSSeedData("12", "2401:c080:1000:4290:5400:02ff:fea5:3f95"));     
+        vSeeds.push_back(CDNSSeedData("13", "45.63.25.141"));     
+		vSeeds.push_back(CDNSSeedData("14", "2401:c080:1800:4a1a:5400:02ff:fea5:3f9c"));     
+        vSeeds.push_back(CDNSSeedData("15", "108.61.252.179"));     
+		vSeeds.push_back(CDNSSeedData("16", "155.138.219.187"));     
+        vSeeds.push_back(CDNSSeedData("17", "66.42.93.170"));     
 
         // Guapcoin addresses start with 'G'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 38);

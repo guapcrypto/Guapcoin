@@ -752,7 +752,7 @@
                           </font>
                          </property>
                          <property name="text">
-                          <string notr="true">&lt;a href=&quot;http://165.227.201.59:3001/&quot;&gt;http://165.227.201.59:3001/&lt;/a&gt;</string>
+                          <string notr="true">&lt;a href=&quot;http://159.65.221.180:3001/&quot;&gt;http://159.65.221.180:3001/&lt;/a&gt;</string>
                          </property>
                          <property name="alignment">
                            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>

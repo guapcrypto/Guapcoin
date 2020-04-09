@@ -1,0 +1,15 @@
+# http://standards.freedesktop.org/desktop-entry-spec/desktop-entry-spec-1.0.html
+
+[Desktop Entry]
+Encoding=UTF-8
+Name=Guapcoin Core
+Comment=Guapcoin Core QT test network
+GenericName=Guapcoin Digital Currency QT client testnet network
+Exec=guapcoin-core.qt-testnet %u
+Terminal=false
+Type=Application
+Icon=${SNAP}/share/pixmaps/guapcoin_testnet.png
+MimeType=x-scheme-handler/guap;
+Categories=X-Office;X-Finance;
+Keywords=internet;guapcoin;tguap;core;wallet;qt;testnet;snap;launchpad;crypto;digital;currency;coin;token;
+Version=1.0

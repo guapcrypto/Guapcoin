@@ -1,9 +1,19 @@
 <TS language="pt" version="2.1">
 <context>
+    <name>AddNewAddressDialog</name>
+    <message>
+        <source>Address</source>
+        <translation>Endereço</translation>
+    </message>
+    </context>
+<context>
+    <name>AddNewContactDialog</name>
+    </context>
+<context>
     <name>AddressBookPage</name>
     <message>
         <source>Right-click to edit address or label</source>
-        <translation>Clique com o botão direito do mouse para editar o endereço ou a descrição</translation>
+        <translation>Clique com o botão direito do rato para editar o endereço ou a descrição</translation>
     </message>
     <message>
         <source>Create a new address</source>
@@ -11,7 +21,7 @@
     </message>
     <message>
         <source>&amp;New</source>
-        <translation>Novo</translation>
+        <translation>&amp;Novo</translation>
     </message>
     <message>
         <source>Copy the currently selected address to the system clipboard</source>
@@ -23,11 +33,11 @@
     </message>
     <message>
         <source>Delete the currently selected address from the list</source>
-        <translation>Deletar da lista o endereço selecionado</translation>
+        <translation>Apagar o endereço selecionado da lista</translation>
     </message>
     <message>
         <source>&amp;Delete</source>
-        <translation>&amp;Excluir</translation>
+        <translation>&amp;Apagar</translation>
     </message>
     <message>
         <source>Export the data in the current tab to a file</source>
@@ -39,19 +49,19 @@
     </message>
     <message>
         <source>C&amp;lose</source>
-        <translation>&amp;Fechar</translation>
+        <translation>F&amp;echar</translation>
     </message>
     <message>
         <source>Choose the address to send coins to</source>
-        <translation>Escolha o endereço para enviar moedas</translation>
+        <translation>Escolha o endereço para onde enviar moedas</translation>
     </message>
     <message>
         <source>Choose the address to receive coins with</source>
-        <translation>Escolha o endereço para receber moedas</translation>
+        <translation>Escolha o endereço onde receber moedas</translation>
     </message>
     <message>
         <source>C&amp;hoose</source>
-        <translation>Escol&amp;her</translation>
+        <translation>E&amp;scolher</translation>
     </message>
     <message>
         <source>Sending addresses</source>
@@ -62,20 +72,20 @@
         <translation>Endereços de recebimento</translation>
     </message>
     <message>
-        <source>These are your GUAP addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Esses são seus endereços GUAP para enviar pagamentos. Sempre confira a quantidade e os endereços de destino antes de enviar moedas.</translation>
+        <source>These are your Guapcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Esses são seus endereços Guapcoin para onde enviar pagamentos. Confira sempre o montante e os endereços de destino antes de enviar moedas.</translation>
     </message>
     <message>
-        <source>These are your GUAP addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Esses são seus endereços GUAP para receber pagamentos. É recomendado usar um novo endereço para cada transação.</translation>
+        <source>These are your Guapcoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Esses são seus endereços Guapcoin onde receber pagamentos. Recomenda-se o uso de um novo endereço para cada transacção.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
-        <translation>C&amp;opiar endereço</translation>
+        <translation>&amp;Copiar Endereço</translation>
     </message>
     <message>
         <source>Copy &amp;Label</source>
-        <translation>Cop&amp;iar Descrição</translation>
+        <translation>Copiar &amp;Descrição</translation>
     </message>
     <message>
         <source>&amp;Edit</source>
@@ -99,6 +109,9 @@
     </message>
 </context>
 <context>
+    <name>AddressLabelRow</name>
+    </context>
+<context>
     <name>AddressTableModel</name>
     <message>
         <source>Label</source>
@@ -109,31 +122,22 @@
         <translation>Endereço</translation>
     </message>
     <message>
+        <source>Date</source>
+        <translation>Data</translation>
+    </message>
+    <message>
         <source>(no label)</source>
         <translation>(Sem descrição)</translation>
     </message>
 </context>
 <context>
+    <name>AddressesWidget</name>
+    </context>
+<context>
     <name>AskPassphraseDialog</name>
     <message>
         <source>Passphrase Dialog</source>
-        <translation>Caixa de diálogo de Senha</translation>
-    </message>
-    <message>
-        <source>Enter passphrase</source>
-        <translation>Digite sua senha</translation>
-    </message>
-    <message>
-        <source>New passphrase</source>
-        <translation>Nova senha</translation>
-    </message>
-    <message>
-        <source>Repeat new passphrase</source>
-        <translation>Repetir senha</translation>
-    </message>
-    <message>
-        <source>Serves to disable the trivial sendmoney when OS account compromised. Provides no real security.</source>
-        <translation>Serve para desabilitar envio trivial de dinheiro quando a conta do SO for comprometida, mas não provê segurança real.</translation>
+        <translation>Caixa de diálogo de senha</translation>
     </message>
     <message>
         <source>Enter the new passphrase to the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
@@ -225,155 +229,19 @@
     </message>
 </context>
 <context>
-    <name>Bip38ToolDialog</name>
-    <message>
-        <source>BIP 38 Tool</source>
-        <translation>BIP 38</translation>
-    </message>
-    <message>
-        <source>&amp;BIP 38 Encrypt</source>
-        <translation>Encriptar com &amp;BIP 38</translation>
-    </message>
-    <message>
-        <source>Enter a GUAP Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
-        <translation>Digite um endereço GUAP que você gostaria de criptografar usando BIP 38. Digite uma frase secreta na caixa do meio. Pressione criptografar para calcular a chave privada criptografada.</translation>
-    </message>
-    <message>
-        <source>Address:</source>
-        <translation>Endereço:</translation>
-    </message>
-    <message>
-        <source>The GUAP address to sign the message with</source>
-        <translation>Um endereço GUAP para assinar a mensagem</translation>
-    </message>
-    <message>
-        <source>Choose previously used address</source>
-        <translation>Escolha o endereço usado anteriormente.</translation>
-    </message>
-    <message>
-        <source>Alt+A</source>
-        <translation>Alt+A</translation>
-    </message>
-    <message>
-        <source>Paste address from clipboard</source>
-        <translation>Cole o endereço da areá de trabalho. </translation>
-    </message>
-    <message>
-        <source>Alt+P</source>
-        <translation>Alt+P</translation>
-    </message>
-    <message>
-        <source>Passphrase: </source>
-        <translation>Senha:</translation>
-    </message>
-    <message>
-        <source>Encrypted Key:</source>
-        <translation>Criptografar a Chave:</translation>
-    </message>
-    <message>
-        <source>Copy the current signature to the system clipboard</source>
-        <translation>Copiar a assinatura para a area de trabalho</translation>
-    </message>
-    <message>
-        <source>Sign the message to prove you own this GUAP address</source>
-        <translation>Assinar a Mensagem para provar que você e dono desse endereço GUAP.</translation>
-    </message>
-    <message>
-        <source>Encrypt &amp;Key</source>
-        <translation>Criptografar Chave</translation>
-    </message>
-    <message>
-        <source>Reset all sign message fields</source>
-        <translation>Reiniciar todas os campos das mensagens assinadas</translation>
-    </message>
-    <message>
-        <source>Clear &amp;All</source>
-        <translation>Limpar todos</translation>
-    </message>
-    <message>
-        <source>&amp;BIP 38 Decrypt</source>
-        <translation>Criptografia BIP 38</translation>
-    </message>
-    <message>
-        <source>The GUAP address the message was signed with</source>
-        <translation>O endereço GUAP que foi assinado com</translation>
-    </message>
-    <message>
-        <source>Decrypted Key:</source>
-        <translation>Chave descriptografada:</translation>
-    </message>
-    <message>
-        <source>Import Address</source>
-        <translation>Importar endereço</translation>
-    </message>
-    <message>
-        <source>Allowed: 0-9,a-z,A-Z,</source>
-        <translation>Permitido: 0-9,a-z,A-Z</translation>
-    </message>
-    <message>
-        <source>The entered address is invalid.</source>
-        <translation>O endereço informado é inválido.</translation>
-    </message>
-    <message>
-        <source>Please check the address and try again.</source>
-        <translation>Favor verificar o endereço e tente novamente.</translation>
-    </message>
-    </context>
-<context>
-    <name>BitcoinGUI</name>
-    <message>
-        <source>Wallet</source>
-        <translation>Carteira</translation>
-    </message>
-    <message>
-        <source>Node</source>
-        <translation>Nó</translation>
-    </message>
-    <message>
-        <source>&amp;Send</source>
-        <translation>&amp;Enviar</translation>
-    </message>
-    <message>
-        <source>&amp;Receive</source>
-        <translation>&amp;Receber</translation>
-    </message>
-    <message>
-        <source>&amp;Transactions</source>
-        <translation>&amp;Transações</translation>
-    </message>
-    <message>
-        <source>&amp;Backup Wallet...</source>
-        <translation>Carteira de backup</translation>
-    </message>
-    <message>
-        <source>Unlock wallet</source>
-        <translation>Desbloquear carteira</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation>Atenção</translation>
-    </message>
-    <message>
-        <source>Information</source>
-        <translation>Informação</translation>
-    </message>
+    <name>BanTableModel</name>
     </context>
 <context>
     <name>BlockExplorer</name>
+    </context>
+<context>
+    <name>CSRow</name>
     </context>
 <context>
     <name>ClientModel</name>
     </context>
 <context>
     <name>CoinControlDialog</name>
-    <message>
-        <source>Amount:</source>
-        <translation>Quantidade:</translation>
-    </message>
-    <message>
-        <source>Priority:</source>
-        <translation>Prioridade:</translation>
-    </message>
     <message>
         <source>Fee:</source>
         <translation>Taxa:</translation>
@@ -396,14 +264,74 @@
     </message>
     </context>
 <context>
+    <name>CoinControlGuapWidget</name>
+    <message>
+        <source>Fee:</source>
+        <translation>Taxa:</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>Quantidade</translation>
+    </message>
+    <message>
+        <source>Label</source>
+        <translation>Descrição</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Endereço</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Data</translation>
+    </message>
+    </context>
+<context>
+    <name>ColdStakingWidget</name>
+    </context>
+<context>
+    <name>ContactDropdownRow</name>
+    </context>
+<context>
+    <name>DashboardWidget</name>
+    <message>
+        <source>Warning</source>
+        <translation>Atenção</translation>
+    </message>
+    <message>
+        <source>Mined</source>
+        <translation>Minerado</translation>
+    </message>
+    </context>
+<context>
+    <name>DefaultDialog</name>
+    </context>
+<context>
+    <name>DenomGenerationDialog</name>
+    </context>
+<context>
     <name>EditAddressDialog</name>
     <message>
         <source>Edit Address</source>
         <translation>Alterar endereço</translation>
     </message>
+    <message>
+        <source>&amp;Label</source>
+        <translation>&amp;Descrição</translation>
+    </message>
+    <message>
+        <source>&amp;Address</source>
+        <translation>&amp;Endereço</translation>
+    </message>
+    </context>
+<context>
+    <name>ExpandableButton</name>
     </context>
 <context>
     <name>FreespaceChecker</name>
+    </context>
+<context>
+    <name>GovernancePage</name>
     </context>
 <context>
     <name>HelpMessageDialog</name>
@@ -412,145 +340,19 @@
     <name>Intro</name>
     </context>
 <context>
-    <name>MasternodeList</name>
+    <name>LoadingDialog</name>
+    </context>
+<context>
+    <name>LockUnlock</name>
+    </context>
+<context>
+    <name>MNRow</name>
+    </context>
+<context>
+    <name>MasterNodeWizardDialog</name>
     <message>
         <source>Address</source>
         <translation>Endereço</translation>
-    </message>
-    </context>
-<context>
-    <name>MultiSendDialog</name>
-    <message>
-        <source>Alt+A</source>
-        <translation>Alt+A</translation>
-    </message>
-    <message>
-        <source>Address:</source>
-        <translation>Endereço:</translation>
-    </message>
-    </context>
-<context>
-    <name>OpenURIDialog</name>
-    </context>
-<context>
-    <name>OptionsDialog</name>
-    </context>
-<context>
-    <name>OverviewPage</name>
-    </context>
-<context>
-    <name>PaymentServer</name>
-    </context>
-<context>
-    <name>PeerTableModel</name>
-    </context>
-<context>
-    <name>QObject</name>
-    <message>
-        <source>Amount</source>
-        <translation>Quantidade</translation>
-    </message>
-    </context>
-<context>
-    <name>QRImageWidget</name>
-    </context>
-<context>
-    <name>RPCConsole</name>
-    </context>
-<context>
-    <name>ReceiveCoinsDialog</name>
-    <message>
-        <source>Clear all fields of the form.</source>
-        <translation>Limpar todos os campos do formulário</translation>
-    </message>
-    <message>
-        <source>Clear</source>
-        <translation>Limpar</translation>
-    </message>
-    <message>
-        <source>Show</source>
-        <translation>Mostrar</translation>
-    </message>
-    <message>
-        <source>Remove the selected entries from the list</source>
-        <translation>Remover as entradas selecionadas da lista</translation>
-    </message>
-    <message>
-        <source>Remove</source>
-        <translation>Remover</translation>
-    </message>
-    </context>
-<context>
-    <name>ReceiveRequestDialog</name>
-    <message>
-        <source>Address</source>
-        <translation>Endereço</translation>
-    </message>
-    <message>
-        <source>Amount</source>
-        <translation>Quantidade</translation>
-    </message>
-    <message>
-        <source>Label</source>
-        <translation>Descrição</translation>
-    </message>
-    </context>
-<context>
-    <name>RecentRequestsTableModel</name>
-    <message>
-        <source>Date</source>
-        <translation>Data</translation>
-    </message>
-    <message>
-        <source>Label</source>
-        <translation>Descrição</translation>
-    </message>
-    <message>
-        <source>Amount</source>
-        <translation>Quantidade</translation>
-    </message>
-    <message>
-        <source>(no label)</source>
-        <translation>(Sem descrição)</translation>
-    </message>
-    </context>
-<context>
-    <name>SendCoinsDialog</name>
-    <message>
-        <source>Amount:</source>
-        <translation>Quantidade:</translation>
-    </message>
-    <message>
-        <source>Priority:</source>
-        <translation>Prioridade:</translation>
-    </message>
-    <message>
-        <source>Fee:</source>
-        <translation>Taxa:</translation>
-    </message>
-    <message>
-        <source>no</source>
-        <translation>não</translation>
-    </message>
-    <message>
-        <source>Transaction Fee:</source>
-        <translation>Taxa de transação:</translation>
-    </message>
-    <message>
-        <source>Choose...</source>
-        <translation>Escolha...</translation>
-    </message>
-    <message>
-        <source>Minimize</source>
-        <translation>Minimizar</translation>
-    </message>
-    <message>
-        <source>Clear all fields of the form.</source>
-        <translation>Limpar todos os campos do formulário</translation>
-    </message>
-    <message>
-        <source>Clear &amp;All</source>
-        <translation>Limpar todos</translation>
     </message>
     <message>
         <source>The amount to pay must be larger than 0.</source>
@@ -568,110 +370,141 @@
         <source>The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
         <translation>A transação foi rejeitada! Isto pode acontecer se algumas de suas moedas na sua carteira já foram gastas, como por exemplo se você usou uma cópia do wallet.dat e as moedas foram gastas na cópia mas não marcadas como gastas aqui.</translation>
     </message>
+    </context>
+<context>
+    <name>MasterNodesWidget</name>
+    </context>
+<context>
+    <name>MnInfoDialog</name>
+    </context>
+<context>
+    <name>MyAddressRow</name>
+    </context>
+<context>
+    <name>NavMenuWidget</name>
+    </context>
+<context>
+    <name>OpenURIDialog</name>
+    </context>
+<context>
+    <name>OptionButton</name>
+    </context>
+<context>
+    <name>OptionsDialog</name>
+    </context>
+<context>
+    <name>GuapcoinGUI</name>
     <message>
-        <source>Pay only the minimum fee of %1</source>
-        <translation>Pague somente a taxa mínima de %1</translation>
+        <source>Wallet</source>
+        <translation>Carteira</translation>
+    </message>
+    <message>
+        <source>Node</source>
+        <translation>Nó</translation>
+    </message>
+    <message>
+        <source>Warning</source>
+        <translation>Atenção</translation>
+    </message>
+    <message>
+        <source>Information</source>
+        <translation>Informação</translation>
+    </message>
+    </context>
+<context>
+    <name>PWidget</name>
+    </context>
+<context>
+    <name>PaymentServer</name>
+    </context>
+<context>
+    <name>PeerTableModel</name>
+    </context>
+<context>
+    <name>ProposalFrame</name>
+    </context>
+<context>
+    <name>QObject</name>
+    <message>
+        <source>Amount</source>
+        <translation>Quantidade</translation>
+    </message>
+    </context>
+<context>
+    <name>RPCConsole</name>
+    </context>
+<context>
+    <name>ReceiveDialog</name>
+    </context>
+<context>
+    <name>ReceiveWidget</name>
+    </context>
+<context>
+    <name>RecentRequestsTableModel</name>
+    <message>
+        <source>Date</source>
+        <translation>Data</translation>
+    </message>
+    <message>
+        <source>Label</source>
+        <translation>Descrição</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Endereço</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>Quantidade</translation>
     </message>
     <message>
         <source>(no label)</source>
         <translation>(Sem descrição)</translation>
     </message>
-</context>
+    </context>
 <context>
-    <name>SendCoinsEntry</name>
+    <name>RequestDialog</name>
     <message>
-        <source>This is a normal payment.</source>
-        <translation>Este é um pagamento normal.</translation>
+        <source>Amount</source>
+        <translation>Quantidade</translation>
     </message>
     <message>
-        <source>Choose previously used address</source>
-        <translation>Escolha o endereço usado anteriormente.</translation>
-    </message>
-    <message>
-        <source>Alt+A</source>
-        <translation>Alt+A</translation>
-    </message>
-    <message>
-        <source>Paste address from clipboard</source>
-        <translation>Cole o endereço da areá de trabalho. </translation>
-    </message>
-    <message>
-        <source>Alt+P</source>
-        <translation>Alt+P</translation>
-    </message>
-    <message>
-        <source>Remove this entry</source>
-        <translation>Remover esta entrada</translation>
-    </message>
-    <message>
-        <source>Message:</source>
-        <translation>Mensagem:</translation>
-    </message>
-    <message>
-        <source>Pay To:</source>
-        <translation>Pagar para:</translation>
-    </message>
-    <message>
-        <source>This is a verified payment request.</source>
-        <translation>Este é um</translation>
+        <source>Label</source>
+        <translation>Descrição</translation>
     </message>
     </context>
 <context>
-    <name>ShutdownWindow</name>
-    <message>
-        <source>Do not shut down the computer until this window disappears.</source>
-        <translation>Não desligue o computador até que esta janela desapareça.</translation>
-    </message>
-</context>
+    <name>SendChangeAddressDialog</name>
+    </context>
 <context>
-    <name>SignVerifyMessageDialog</name>
+    <name>SendCustomFeeDialog</name>
+    </context>
+<context>
+    <name>SendMultiRow</name>
+    </context>
+<context>
+    <name>SendWidget</name>
     <message>
-        <source>The GUAP address to sign the message with</source>
-        <translation>Um endereço GUAP para assinar a mensagem</translation>
+        <source>Amount</source>
+        <translation>Quantidade</translation>
+    </message>
+    </context>
+<context>
+    <name>SettingsBackupWallet</name>
+    </context>
+<context>
+    <name>SettingsBitToolWidget</name>
+    <message>
+        <source>Import Address</source>
+        <translation>Importar endereço</translation>
     </message>
     <message>
-        <source>Choose previously used address</source>
-        <translation>Escolha o endereço usado anteriormente.</translation>
+        <source>Clear</source>
+        <translation>Limpar</translation>
     </message>
     <message>
-        <source>Alt+A</source>
-        <translation>Alt+A</translation>
-    </message>
-    <message>
-        <source>Paste address from clipboard</source>
-        <translation>Cole o endereço da areá de trabalho. </translation>
-    </message>
-    <message>
-        <source>Alt+P</source>
-        <translation>Alt+P</translation>
-    </message>
-    <message>
-        <source>Enter the message you want to sign here</source>
-        <translation>Coloque a mensagem que deseja assinar aqui</translation>
-    </message>
-    <message>
-        <source>Signature</source>
-        <translation>Assinatura</translation>
-    </message>
-    <message>
-        <source>Copy the current signature to the system clipboard</source>
-        <translation>Copiar a assinatura para a area de trabalho</translation>
-    </message>
-    <message>
-        <source>Sign the message to prove you own this GUAP address</source>
-        <translation>Assinar a Mensagem para provar que você e dono desse endereço GUAP.</translation>
-    </message>
-    <message>
-        <source>The GUAP address the message was signed with</source>
-        <translation>O endereço GUAP que foi assinado com</translation>
-    </message>
-    <message>
-        <source>Reset all sign message fields</source>
-        <translation>Reiniciar todas os campos das mensagens assinadas</translation>
-    </message>
-    <message>
-        <source>Clear &amp;All</source>
-        <translation>Limpar todos</translation>
+        <source>Allowed: 0-9,a-z,A-Z,</source>
+        <translation>Permitido: 0-9,a-z,A-Z</translation>
     </message>
     <message>
         <source>The entered address is invalid.</source>
@@ -683,7 +516,91 @@
     </message>
     </context>
 <context>
+    <name>SettingsConsoleWidget</name>
+    </context>
+<context>
+    <name>SettingsDisplayOptionsWidget</name>
+    </context>
+<context>
+    <name>SettingsFaqWidget</name>
+    </context>
+<context>
+    <name>SettingsInformationWidget</name>
+    <message>
+        <source>Information</source>
+        <translation>Informação</translation>
+    </message>
+    </context>
+<context>
+    <name>SettingsMainOptionsWidget</name>
+    </context>
+<context>
+    <name>SettingsMultisendDialog</name>
+    </context>
+<context>
+    <name>SettingsMultisendWidget</name>
+    </context>
+<context>
+    <name>SettingsSignMessageWidgets</name>
+    <message>
+        <source>Clear</source>
+        <translation>Limpar</translation>
+    </message>
+    <message>
+        <source>Signature</source>
+        <translation>Assinatura</translation>
+    </message>
+    <message>
+        <source>The entered address is invalid.</source>
+        <translation>O endereço informado é inválido.</translation>
+    </message>
+    <message>
+        <source>Please check the address and try again.</source>
+        <translation>Favor verificar o endereço e tente novamente.</translation>
+    </message>
+    </context>
+<context>
+    <name>SettingsWalletOptionsWidget</name>
+    <message>
+        <source>Wallet</source>
+        <translation>Carteira</translation>
+    </message>
+    </context>
+<context>
+    <name>SettingsWalletRepairWidget</name>
+    </context>
+<context>
+    <name>SettingsWidget</name>
+    <message>
+        <source>Wallet</source>
+        <translation>Carteira</translation>
+    </message>
+    <message>
+        <source>Information</source>
+        <translation>Informação</translation>
+    </message>
+    </context>
+<context>
+    <name>ShutdownWindow</name>
+    <message>
+        <source>Do not shut down the computer until this window disappears.</source>
+        <translation>Não desligue o computador até que esta janela desapareça.</translation>
+    </message>
+</context>
+<context>
+    <name>SnackBar</name>
+    </context>
+<context>
+    <name>Splash</name>
+    </context>
+<context>
     <name>SplashScreen</name>
+    </context>
+<context>
+    <name>TooltipMenu</name>
+    </context>
+<context>
+    <name>TopBar</name>
     </context>
 <context>
     <name>TrafficGraphWidget</name>
@@ -760,9 +677,6 @@
     </message>
 </context>
 <context>
-    <name>TransactionDescDialog</name>
-    </context>
-<context>
     <name>TransactionTableModel</name>
     <message>
         <source>Date</source>
@@ -782,93 +696,29 @@
     </message>
     </context>
 <context>
-    <name>TransactionView</name>
+    <name>TxDetailDialog</name>
     <message>
-        <source>Today</source>
-        <translation>Hoje</translation>
-    </message>
-    <message>
-        <source>This week</source>
-        <translation>Essa semana</translation>
-    </message>
-    <message>
-        <source>This month</source>
-        <translation>Esse mês</translation>
-    </message>
-    <message>
-        <source>Last month</source>
-        <translation>Último mês</translation>
-    </message>
-    <message>
-        <source>This year</source>
-        <translation>Esse ano</translation>
-    </message>
-    <message>
-        <source>Most Common</source>
-        <translation>Mais comum</translation>
-    </message>
-    <message>
-        <source>Sent to</source>
-        <translation>Enviado para</translation>
-    </message>
-    <message>
-        <source>Mined</source>
-        <translation>Minerado</translation>
-    </message>
-    <message>
-        <source>Comma separated file (*.csv)</source>
-        <translation>Arquivo separado por vírgulas (*.csv)</translation>
-    </message>
-    <message>
-        <source>Date</source>
-        <translation>Data</translation>
-    </message>
-    <message>
-        <source>Label</source>
-        <translation>Descrição</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation>Endereço</translation>
-    </message>
-    <message>
-        <source>Exporting Failed</source>
-        <translation>A exportação falhou</translation>
+        <source>Fee:</source>
+        <translation>Taxa:</translation>
     </message>
     </context>
 <context>
-    <name>UnitDisplayStatusBarControl</name>
-    </context>
-<context>
-    <name>WalletFrame</name>
+    <name>TxRow</name>
     </context>
 <context>
     <name>WalletModel</name>
     </context>
 <context>
-    <name>WalletView</name>
-    <message>
-        <source>&amp;Export</source>
-        <translation>&amp;Exportar</translation>
-    </message>
-    <message>
-        <source>Export the data in the current tab to a file</source>
-        <translation>Exporta os dados da aba ativa para um arquivo</translation>
-    </message>
-    <message>
-        <source>Selected amount:</source>
-        <translation>Quantia selecionada:</translation>
-    </message>
+    <name>WalletPasswordDialog</name>
+    </context>
+<context>
+    <name>WelcomeContentWidget</name>
     </context>
 <context>
     <name>guapcoin-core</name>
     <message>
         <source>Delete all wallet transactions and only recover those parts of the blockchain through -rescan on startup</source>
         <translation>Deletar todas as transações da carteira e somente recuperar aquelas partes do blockchain através de -rescan na inicialização</translation>
-    </message>
-    <message>
-        <source>Disable all Guapcoin specific functionality (Masternodes, SwiftTX, Budgeting) (0-1, default: %u)</source>
-        <translation>Desabilitar todas as funcionacilidades específicas da Guapcoin (Masternodes, SwiftTX, Budgeting) (0-1, default %u)</translation>
     </message>
     <message>
         <source>Connect through SOCKS5 proxy</source>
@@ -887,10 +737,6 @@
         <translation>Erro: Espaço em disco baixo!</translation>
     </message>
     <message>
-        <source>Finalizing transaction.</source>
-        <translation>Finalizando transação.</translation>
-    </message>
-    <message>
         <source>Importing...</source>
         <translation>Importando...</translation>
     </message>
@@ -903,24 +749,8 @@
         <translation>Fundos insuficientes.</translation>
     </message>
     <message>
-        <source>Invalid private key.</source>
-        <translation>Chave privada inválida.</translation>
-    </message>
-    <message>
-        <source>Invalid script detected.</source>
-        <translation>Script inválido detectado.</translation>
-    </message>
-    <message>
         <source>Loading wallet...</source>
         <translation>Carregando carteira...</translation>
-    </message>
-    <message>
-        <source>No Masternodes detected.</source>
-        <translation>Nenhum Masternode detectado.</translation>
-    </message>
-    <message>
-        <source>No compatible Masternode found.</source>
-        <translation>Nenhum Masternode compatível encontrado.</translation>
     </message>
     <message>
         <source>Options:</source>
@@ -957,18 +787,6 @@
     <message>
         <source>Send transactions as zero-fee transactions if possible (default: %u)</source>
         <translation>Enviar transações como transações de taxa zero, se possível (padrão:%u)</translation>
-    </message>
-    <message>
-        <source>Server certificate file (default: %s)</source>
-        <translation>Arquivo de certificado do servidor (padrão:%s)</translation>
-    </message>
-    <message>
-        <source>Server private key (default: %s)</source>
-        <translation>Chave privada do servidor (padrão:%s)</translation>
-    </message>
-    <message>
-        <source>Session not complete!</source>
-        <translation>Sessão não concluída!</translation>
     </message>
     <message>
         <source>Session timed out.</source>
@@ -1015,10 +833,6 @@
         <translation>Shrink arquivo debug.log na inicialização do cliente (padrão: 1 quando não -debug)</translation>
     </message>
     <message>
-        <source>Signing failed.</source>
-        <translation>A assinatura falhou.</translation>
-    </message>
-    <message>
         <source>Signing timed out.</source>
         <translation>A assinatura expirou.</translation>
     </message>
@@ -1063,22 +877,6 @@
         <translation>Parar de executar após importar blocos do disco (padrão:%u)</translation>
     </message>
     <message>
-        <source>Submitted following entries to masternode: %u / %d</source>
-        <translation>Enviado as seguintes entradas para masternode:%u / %d</translation>
-    </message>
-    <message>
-        <source>Submitted to masternode, waiting for more entries ( %u / %d ) %s</source>
-        <translation>Enviado para masternode, aguardando mais entradas (%u / %d) %s</translation>
-    </message>
-    <message>
-        <source>Submitted to masternode, waiting in queue %s</source>
-        <translation>Enviado para masternode, esperando na fila %s</translation>
-    </message>
-    <message>
-        <source>SwiftTX options:</source>
-        <translation>Opções SwiftTX:</translation>
-    </message>
-    <message>
         <source>Synchronization failed</source>
         <translation>Sincronização falhou</translation>
     </message>
@@ -1119,10 +917,6 @@
         <translation>Isso é destinado a ferramentas de teste de regressão e desenvolvimento de aplicativos.</translation>
     </message>
     <message>
-        <source>This is not a Masternode.</source>
-        <translation>Isto não e um Masternode</translation>
-    </message>
-    <message>
         <source>Threshold for disconnecting misbehaving peers (default: %u)</source>
         <translation>Limiar para desconectar pares com comportamentos incorretos (padrão:%u)</translation>
     </message>
@@ -1135,28 +929,12 @@
         <translation>Os valores das transações devem ser positivos</translation>
     </message>
     <message>
-        <source>Transaction created successfully.</source>
-        <translation>Transação criada com sucesso.</translation>
-    </message>
-    <message>
-        <source>Transaction fees are too high.</source>
-        <translation>As taxas de transação são muito altas.</translation>
-    </message>
-    <message>
-        <source>Transaction not valid.</source>
-        <translation>A transação não é válida.</translation>
-    </message>
-    <message>
         <source>Transaction too large for fee policy</source>
         <translation>Transação muito grande para a política de tarifas</translation>
     </message>
     <message>
         <source>Transaction too large</source>
         <translation>Transmissão muito grande</translation>
-    </message>
-    <message>
-        <source>Transmitting final transaction.</source>
-        <translation>Transmissão da transação final.</translation>
     </message>
     <message>
         <source>Unable to bind to %s on this computer (bind returned error %s)</source>
@@ -1171,16 +949,8 @@
         <translation>Rede desconhecida especificada em -onlynet: '%s'</translation>
     </message>
     <message>
-        <source>Unknown state: id = %u</source>
-        <translation>Estado desconhecido: id =%u</translation>
-    </message>
-    <message>
         <source>Upgrade wallet to latest format</source>
         <translation>Atualizar a carteira para a ultimo formato</translation>
-    </message>
-    <message>
-        <source>Use OpenSSL (https) for JSON-RPC connections</source>
-        <translation>Use o OpenSSL(https) para conexões JSON-RPC</translation>
     </message>
     <message>
         <source>Use UPnP to map the listening port (default: %u)</source>
@@ -1209,10 +979,6 @@
     <message>
         <source>Wallet %s resides outside data directory %s</source>
         <translation>carteira %s reside fora do diretório %s</translation>
-    </message>
-    <message>
-        <source>Wallet is locked.</source>
-        <translation>Carteira esta bloqueada.</translation>
     </message>
     <message>
         <source>Wallet needed to be rewritten: restart Guapcoin Core to complete</source>
@@ -1246,9 +1012,8 @@
         <source>You need to rebuild the database using -reindex to change -txindex</source>
         <translation>Você precisa reconstruir a database usando -reindex para mudar -txindex</translation>
     </message>
-    <message>
-        <source>Your transaction was accepted into the pool!</source>
-        <translation>Sua transação foi aceita na pool!</translation>
-    </message>
+    </context>
+<context>
+    <name>send</name>
     </context>
 </TS>

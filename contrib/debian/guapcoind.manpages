@@ -1,2 +1,2 @@
-debian/manpages/guapcoind.1
-debian/manpages/guapcoin.conf.5
+doc/man/guapcoind.1
+doc/man/guapcoin-cli.1

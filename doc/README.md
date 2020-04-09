@@ -1,54 +1,63 @@
 Guapcoin Core
-=====================
+=============
 
 Setup
 ---------------------
-[Guapcoin Core](https://www.GUAP.network) is the original Guapcoin client and it builds the backbone of the network. However, it downloads and stores the entire history of Guapcoin transactions; depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more. Thankfully you only have to do this once.
+[Guapcoin Core](http://guapcoin.org/wallet) is the original Guapcoin client and it builds the backbone of the network. However, it downloads and stores the entire history of Guapcoin transactions; depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more. Thankfully you only have to do this once.
 
 Running
 ---------------------
-The following are some helpful notes on how to run Guapcoin on your native platform.
+The following are some helpful notes on how to run Guapcoin Core on your native platform.
 
 ### Unix
 
 Unpack the files into a directory and run:
 
-- bin/32/guapcoin-qt (GUI, 32-bit) or bin/32/guapcoind (headless, 32-bit)
-- bin/64/guapcoin-qt (GUI, 64-bit) or bin/64/guapcoind (headless, 64-bit)
+- `bin/guapcoin-qt` (GUI) or
+- `bin/guapcoind` (headless)
 
 ### Windows
 
 Unpack the files into a directory, and then run guapcoin-qt.exe.
 
-### OSX
+### macOS
 
 Drag Guapcoin-Qt to your applications folder, and then run Guapcoin-Qt.
 
 ### Need Help?
 
-* Join our Discord server [Discord Server](https://discordapp.com/invite/9nzt37V)
+* See the documentation at the [Guapcoin Wiki](https://github.com/Guapcoin-Project/Guapcoin/wiki)
+for help and more information.
+* Ask for help on [BitcoinTalk](https://bitcointalk.org/index.php?topic=1262920.0) or on the [Guapcoin Forum](http://forum.guapcoin.org/).
+* Join our Discord server [Discord Server](https://discord.guapcoin.org)
 
 Building
 ---------------------
-The following are developer notes on how to build Guapcoin on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
+The following are developer notes on how to build Guapcoin Core on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
 
-- [OSX Build Notes](build-osx.md)
+- [Dependencies](dependencies.md)
+- [macOS Build Notes](build-osx.md)
 - [Unix Build Notes](build-unix.md)
+- [Windows Build Notes](build-windows.md)
 - [Gitian Building Guide](gitian-building.md)
 
 Development
 ---------------------
-The Guapcoin repo's [root README](https://github.com/guapcoin/guapcoin/blob/master/README.md) contains relevant information on the development process and automated testing.
+The Guapcoin repo's [root README](/README.md) contains relevant information on the development process and automated testing.
 
 - [Developer Notes](developer-notes.md)
 - [Multiwallet Qt Development](multiwallet-qt.md)
 - [Release Notes](release-notes.md)
 - [Release Process](release-process.md)
-- [Source Code Documentation (External Link)](https://dev.visucore.com/bitcoin/doxygen/) ***TODO***
+- [Source Code Documentation (External Link)](https://www.fuzzbawls.pw/guapcoin/doxygen/)
 - [Translation Process](translation_process.md)
 - [Unit Tests](unit-tests.md)
 - [Unauthenticated REST Interface](REST-interface.md)
 - [Dnsseed Policy](dnsseed-policy.md)
+
+### Resources
+* Discuss on the [BitcoinTalk](https://bitcointalk.org/index.php?topic=1262920.0) or the [Guapcoin](http://forum.guapcoin.org/) forum.
+* Join the [Guapcoin Discord](https://discord.guapcoin.org).
 
 ### Miscellaneous
 - [Assets Attribution](assets-attribution.md)
@@ -58,6 +67,6 @@ The Guapcoin repo's [root README](https://github.com/guapcoin/guapcoin/blob/mast
 
 License
 ---------------------
-Distributed under the [MIT/X11 software license](http://www.opensource.org/licenses/mit-license.php).
+Distributed under the [MIT software license](/COPYING).
 This product includes software developed by the OpenSSL Project for use in the [OpenSSL Toolkit](https://www.openssl.org/). This product includes
 cryptographic software written by Eric Young ([eay@cryptsoft.com](mailto:eay@cryptsoft.com)), and UPnP software written by Thomas Bernard.

@@ -1,4 +1,6 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
+// Copyright (c) 2017-2019 The PIVX developers
+// Copyright (c) 2019-2020 The Guapcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -60,7 +62,7 @@ public:
     void setValue(const CAmount& value)
     {
         lineEdit()->setText(BitcoinUnits::format(currentUnit, value, false, BitcoinUnits::separatorAlways));
-        emit valueChanged();
+        Q_EMIT valueChanged();
     }
 
     void stepBy(int steps)
@@ -174,7 +176,7 @@ protected:
         return rv;
     }
 
-signals:
+Q_SIGNALS:
     void valueChanged();
 };
 

@@ -1,7 +1,14 @@
 Translations
 ============
 
-The Guapcoin Core project has been designed to support multiple localisations. This makes adding new phrases, and completely new languages easily achievable.
+The Guapcoin Core project has been designed to support multiple localisations. This makes adding new phrases, and completely new languages easily achievable. For managing all application translations, Guapcoin Core makes use of the Transifex online translation management tool.
+
+### Helping to translate (using Transifex)
+Transifex is setup to monitor the GitHub repo for updates, and when code containing new translations is found, Transifex will process any changes. It may take several hours after a pull-request has been merged, to appear in the Transifex web interface.
+
+Multiple language support is critical in assisting Guapcoin's global adoption, and growth. One of Guapcoin's greatest strengths is cross-border money transfers, any help making that easier is greatly appreciated.
+
+See the [Transifex Guapcoin project](https://www.transifex.com/guapcoin-project/guapcoin-project-translations/) to assist in translations.
 
 ### Writing code with translations
 We use automated scripts to help extract translations in both Qt, and non-Qt source files. It is rarely necessary to manually edit the files in `src/qt/locale/`. The translation source files must adhere to the following format:
@@ -25,11 +32,53 @@ QToolBar *toolbar = addToolBar(tr("Tabs toolbar"));
 ### Creating a pull-request
 For general PRs, you shouldn’t include any updates to the translation source files. They will be updated periodically, primarily around pre-releases, allowing time for any new phrases to be translated before public releases. This is also important in avoiding translation related merge conflicts.
 
+When an updated source file is merged into the GitHub repo, Transifex will automatically detect it (although it can take several hours). Once processed, the new strings will show up as "Remaining" in the Transifex web interface and are ready for translators.
+
 To create the pull-request, use the following commands:
 ```
 git add src/qt/guapcoinstrings.cpp src/qt/locale/guapcoin_en.ts
 git commit
 ```
+
+### Creating a Transifex account
+Visit the [Transifex Signup](https://www.transifex.com/signup/) page to create an account. Take note of your username and password, as they will be required to configure the command-line tool.
+
+You can find the Guapcoin translation project at [https://www.transifex.com/guapcoin-project/guapcoin-project-translations/](https://www.transifex.com/guapcoin-project/guapcoin-project-translations/).
+
+### Installing the Transifex client command-line tool
+The client is used to fetch updated translations. If you are having problems, or need more details, see [https://docs.transifex.com/client/installing-the-client](https://docs.transifex.com/client/installing-the-client)
+
+`pip install transifex-client`
+
+Setup your Transifex client config as follows. Please *ignore the token field*.
+
+```ini
+nano ~/.transifexrc
+
+[https://www.transifex.com]
+hostname = https://www.transifex.com
+password = PASSWORD
+token =
+username = USERNAME
+```
+
+The Transifex Guapcoin project config file is included as part of the repo. It can be found at `.tx/config`, however you shouldn’t need to change anything.
+
+### Synchronising translations
+To assist in updating translations, we have created a script to help.
+
+1. `python contrib/devtools/update-translations.py`
+2. `git add` new translations from `src/qt/locale/`
+3. Update `src/qt/guapcoin_locale.qrc` manually or via
+```bash
+git ls-files src/qt/locale/*ts|xargs -n1 basename|sed 's/\(guapcoin_\(.*\)\).ts/<file alias="\2">locale\/\1.qm<\/file>/'
+```
+4. Update `src/Makefile.qt_locale.include` manually or via
+```bash
+git ls-files src/qt/locale/*ts|xargs -n1 basename|sed 's/\(guapcoin_\(.*\)\).ts/  qt\/locale\/\1.ts \\/'
+```
+
+**Do not directly download translations** one by one from the Transifex website, as we do a few post-processing steps before committing the translations.
 
 ### Handling Plurals (in source files)
 When new plurals are added to the source file, it's important to do the following steps:
@@ -55,6 +104,6 @@ To create a new language template, you will need to edit the languages manifest 
 **Note:** that the language translation file **must end in `.qm`** (the compiled extension), and not `.ts`.
 
 ### Questions and general assistance
-[Guapcoin Discord](https://discord.gg/9nzt37V).
+The Guapcoin Core translation maintainers include *Fuzzbawls*. You can find them, and others, in the [Guapcoin Discord](https://discord.guapcoin.org).
 
 Announcements will be posted during application pre-releases to notify translators to check for updates.

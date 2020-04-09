@@ -5,7 +5,7 @@
 DEFINES += ENABLE_WALLET
 
 TEMPLATE = app
-TARGET =
+TARGET = 
 DEPENDPATH += . \
               src \
               src/compat \
@@ -16,7 +16,6 @@ DEPENDPATH += . \
               src/primitives \
               src/qt \
               src/script \
-              src/test \
               src/univalue \
               src/leveldb/db \
               src/leveldb/issues \
@@ -28,7 +27,6 @@ DEPENDPATH += . \
               src/qt/test \
               src/secp256k1/include \
               src/secp256k1/src \
-              src/test/data \
               src/leveldb/doc/bench \
               src/leveldb/helpers/memenv \
               src/leveldb/include/leveldb \
@@ -49,15 +47,12 @@ INCLUDEPATH += . \
                src/compat \
                src/secp256k1/include \
                src/leveldb/helpers/memenv \
-               src/test/data \
-               src/test \
                src/qt/test \
                src/secp256k1/src \
                src/secp256k1/src/java
 
 # Input
-HEADERS += src/bignum.h \
-           src/activemasternode.h \
+HEADERS += src/activemasternode.h \
            src/addrman.h \
            src/alert.h \
            src/allocators.h \
@@ -77,6 +72,8 @@ HEADERS += src/bignum.h \
            src/compressor.h \
            src/core_io.h \
            src/crypter.h \
+           src/obfuscation-relay.h \
+           src/obfuscation.h \
            src/guapcoin-config.h \
            src/db.h \
            src/eccryptoverify.h \
@@ -96,7 +93,6 @@ HEADERS += src/bignum.h \
            src/masternode.h \
            src/masternodeconfig.h \
            src/masternodeman.h \
-           src/masternode-helpers.h \
            src/merkleblock.h \
            src/miner.h \
            src/mruset.h \
@@ -175,6 +171,7 @@ HEADERS += src/bignum.h \
            src/qt/coincontroldialog.h \
            src/qt/coincontroltreewidget.h \
            src/qt/csvmodelwriter.h \
+           src/qt/obfuscationconfig.h \
            src/qt/editaddressdialog.h \
            src/qt/guiconstants.h \
            src/qt/guiutil.h \
@@ -263,9 +260,6 @@ HEADERS += src/bignum.h \
            src/leveldb/util/testharness.h \
            src/leveldb/util/testutil.h \
            src/qt/forms/ui_aboutdialog.h \
-           src/qt/test/paymentrequestdata.h \
-           src/qt/test/paymentservertests.h \
-           src/qt/test/uritests.h \
            src/secp256k1/include/secp256k1.h \
            src/secp256k1/src/ecdsa.h \
            src/secp256k1/src/ecdsa_impl.h \
@@ -301,17 +295,6 @@ HEADERS += src/bignum.h \
            src/secp256k1/src/testrand.h \
            src/secp256k1/src/testrand_impl.h \
            src/secp256k1/src/util.h \
-           src/test/data/alertTests.raw.h \
-           src/test/data/base58_encode_decode.json.h \
-           src/test/data/base58_keys_invalid.json.h \
-           src/test/data/base58_keys_valid.json.h \
-           src/test/data/script_invalid.json.h \
-           src/test/data/script_valid.json.h \
-           src/test/data/sig_canonical.json.h \
-           src/test/data/sig_noncanonical.json.h \
-           src/test/data/sighash.json.h \
-           src/test/data/tx_invalid.json.h \
-           src/test/data/tx_valid.json.h \
            src/leveldb/helpers/memenv/memenv.h \
            src/leveldb/include/leveldb/c.h \
            src/leveldb/include/leveldb/cache.h \
@@ -339,6 +322,7 @@ HEADERS += src/bignum.h \
 FORMS += src/qt/forms/addressbookpage.ui \
          src/qt/forms/askpassphrasedialog.ui \
          src/qt/forms/coincontroldialog.ui \
+         src/qt/forms/obfuscationconfig.ui \
          src/qt/forms/editaddressdialog.ui \
          src/qt/forms/helpmessagedialog.ui \
          src/qt/forms/intro.ui \
@@ -369,6 +353,8 @@ SOURCES += src/activemasternode.cpp \
            src/core_read.cpp \
            src/core_write.cpp \
            src/crypter.cpp \
+           src/obfuscation-relay.cpp \
+           src/obfuscation.cpp \
            src/guapcoin-cli.cpp \
            src/guapcoin-tx.cpp \
            src/guapcoin.cpp \
@@ -390,7 +376,6 @@ SOURCES += src/activemasternode.cpp \
            src/masternode.cpp \
            src/masternodeconfig.cpp \
            src/masternodeman.cpp \
-           src/masternode-helpers.cpp \
            src/merkleblock.cpp \
            src/miner.cpp \
            src/net.cpp \
@@ -466,6 +451,7 @@ SOURCES += src/activemasternode.cpp \
            src/qt/coincontroldialog.cpp \
            src/qt/coincontroltreewidget.cpp \
            src/qt/csvmodelwriter.cpp \
+           src/qt/obfuscationconfig.cpp \
            src/qt/guapcoin.cpp \
            src/qt/guapcoinstrings.cpp \
            src/qt/editaddressdialog.cpp \
@@ -511,47 +497,6 @@ SOURCES += src/activemasternode.cpp \
            src/script/sigcache.cpp \
            src/script/sign.cpp \
            src/script/standard.cpp \
-           src/test/accounting_tests.cpp \
-           src/test/alert_tests.cpp \
-           src/test/allocator_tests.cpp \
-           src/test/base32_tests.cpp \
-           src/test/base58_tests.cpp \
-           src/test/base64_tests.cpp \
-           src/test/bip32_tests.cpp \
-           src/test/bloom_tests.cpp \
-           src/test/checkblock_tests.cpp \
-           src/test/Checkpoints_tests.cpp \
-           src/test/coins_tests.cpp \
-           src/test/compress_tests.cpp \
-           src/test/crypto_tests.cpp \
-           src/test/DoS_tests.cpp \
-           src/test/getarg_tests.cpp \
-           src/test/hash_tests.cpp \
-           src/test/key_tests.cpp \
-           src/test/main_tests.cpp \
-           src/test/mempool_tests.cpp \
-           src/test/miner_tests.cpp \
-           src/test/mruset_tests.cpp \
-           src/test/multisig_tests.cpp \
-           src/test/netbase_tests.cpp \
-           src/test/pmt_tests.cpp \
-           src/test/rpc_tests.cpp \
-           src/test/rpc_wallet_tests.cpp \
-           src/test/sanity_tests.cpp \
-           src/test/script_P2SH_tests.cpp \
-           src/test/script_tests.cpp \
-           src/test/scriptnum_tests.cpp \
-           src/test/serialize_tests.cpp \
-           src/test/sighash_tests.cpp \
-           src/test/sigopcount_tests.cpp \
-           src/test/skiplist_tests.cpp \
-           src/test/test_guapcoin.cpp \
-           src/test/timedata_tests.cpp \
-           src/test/transaction_tests.cpp \
-           src/test/uint256_tests.cpp \
-           src/test/univalue_tests.cpp \
-           src/test/util_tests.cpp \
-           src/test/wallet_tests.cpp \
            src/univalue/gen.cpp \
            src/univalue/univalue.cpp \
            src/univalue/univalue_read.cpp \
@@ -654,3 +599,6 @@ TRANSLATIONS += src/qt/locale/guapcoin_bg.ts \
                 src/qt/locale/guapcoin_vi.ts \
                 src/qt/locale/guapcoin_zh_CN.ts \
                 src/qt/locale/guapcoin_zh_TW.ts
+
+DISTFILES += \
+    README.md

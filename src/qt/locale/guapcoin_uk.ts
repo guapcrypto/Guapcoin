@@ -1,5 +1,15 @@
 <TS language="uk" version="2.1">
 <context>
+    <name>AddNewAddressDialog</name>
+    <message>
+        <source>Address</source>
+        <translation>Адреса</translation>
+    </message>
+    </context>
+<context>
+    <name>AddNewContactDialog</name>
+    </context>
+<context>
     <name>AddressBookPage</name>
     <message>
         <source>Right-click to edit address or label</source>
@@ -62,12 +72,12 @@
         <translation>Адреса отримання</translation>
     </message>
     <message>
-        <source>These are your GUAP addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Це ваші GUAP-адреси для надсилання платежів. Завжди перевіряйте суму та адресу одержувача перед відправленням монет.</translation>
+        <source>These are your Guapcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Це ваші Guapcoin-адреси для надсилання платежів. Завжди перевіряйте суму та адресу одержувача перед відправленням монет.</translation>
     </message>
     <message>
-        <source>These are your GUAP addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Це ваші GUAP адреси для отримання платежів. Для кожної транзакції рекомендується використовувати нову адресу одержувача.</translation>
+        <source>These are your Guapcoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Це ваші Guapcoin адреси для отримання платежів. Для кожної транзакції рекомендується використовувати нову адресу одержувача.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -99,6 +109,9 @@
     </message>
 </context>
 <context>
+    <name>AddressLabelRow</name>
+    </context>
+<context>
     <name>AddressTableModel</name>
     <message>
         <source>Label</source>
@@ -114,26 +127,13 @@
     </message>
 </context>
 <context>
+    <name>AddressesWidget</name>
+    </context>
+<context>
     <name>AskPassphraseDialog</name>
     <message>
         <source>Passphrase Dialog</source>
         <translation>Кодове слово</translation>
-    </message>
-    <message>
-        <source>Enter passphrase</source>
-        <translation>Введіть кодове слово</translation>
-    </message>
-    <message>
-        <source>New passphrase</source>
-        <translation>Нове кодове слово</translation>
-    </message>
-    <message>
-        <source>Repeat new passphrase</source>
-        <translation>Повторіть кодове слово</translation>
-    </message>
-    <message>
-        <source>Serves to disable the trivial sendmoney when OS account compromised. Provides no real security.</source>
-        <translation>Для ввімкнення тривіальної відправки коштів при скомпрометуванні операційної системи. Не забезпечує реальної безпеки.</translation>
     </message>
     <message>
         <source>Enter the new passphrase to the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
@@ -189,17 +189,13 @@
     </message>
     </context>
 <context>
-    <name>Bip38ToolDialog</name>
-    </context>
-<context>
-    <name>BitcoinGUI</name>
-    <message>
-        <source>Unlock wallet</source>
-        <translation>Розблокувати гаманець</translation>
-    </message>
+    <name>BanTableModel</name>
     </context>
 <context>
     <name>BlockExplorer</name>
+    </context>
+<context>
+    <name>CSRow</name>
     </context>
 <context>
     <name>ClientModel</name>
@@ -212,10 +208,42 @@
     </message>
     </context>
 <context>
+    <name>CoinControlGuapWidget</name>
+    <message>
+        <source>Label</source>
+        <translation>Мітка</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Адреса</translation>
+    </message>
+    </context>
+<context>
+    <name>ColdStakingWidget</name>
+    </context>
+<context>
+    <name>ContactDropdownRow</name>
+    </context>
+<context>
+    <name>DashboardWidget</name>
+    </context>
+<context>
+    <name>DefaultDialog</name>
+    </context>
+<context>
+    <name>DenomGenerationDialog</name>
+    </context>
+<context>
     <name>EditAddressDialog</name>
     </context>
 <context>
+    <name>ExpandableButton</name>
+    </context>
+<context>
     <name>FreespaceChecker</name>
+    </context>
+<context>
+    <name>GovernancePage</name>
     </context>
 <context>
     <name>HelpMessageDialog</name>
@@ -224,23 +252,47 @@
     <name>Intro</name>
     </context>
 <context>
-    <name>MasternodeList</name>
+    <name>LoadingDialog</name>
+    </context>
+<context>
+    <name>LockUnlock</name>
+    </context>
+<context>
+    <name>MNRow</name>
+    </context>
+<context>
+    <name>MasterNodeWizardDialog</name>
     <message>
         <source>Address</source>
         <translation>Адреса</translation>
     </message>
     </context>
 <context>
-    <name>MultiSendDialog</name>
+    <name>MasterNodesWidget</name>
+    </context>
+<context>
+    <name>MnInfoDialog</name>
+    </context>
+<context>
+    <name>MyAddressRow</name>
+    </context>
+<context>
+    <name>NavMenuWidget</name>
     </context>
 <context>
     <name>OpenURIDialog</name>
     </context>
 <context>
+    <name>OptionButton</name>
+    </context>
+<context>
     <name>OptionsDialog</name>
     </context>
 <context>
-    <name>OverviewPage</name>
+    <name>GuapcoinGUI</name>
+    </context>
+<context>
+    <name>PWidget</name>
     </context>
 <context>
     <name>PaymentServer</name>
@@ -249,27 +301,19 @@
     <name>PeerTableModel</name>
     </context>
 <context>
-    <name>QObject</name>
+    <name>ProposalFrame</name>
     </context>
 <context>
-    <name>QRImageWidget</name>
+    <name>QObject</name>
     </context>
 <context>
     <name>RPCConsole</name>
     </context>
 <context>
-    <name>ReceiveCoinsDialog</name>
+    <name>ReceiveDialog</name>
     </context>
 <context>
-    <name>ReceiveRequestDialog</name>
-    <message>
-        <source>Address</source>
-        <translation>Адреса</translation>
-    </message>
-    <message>
-        <source>Label</source>
-        <translation>Мітка</translation>
-    </message>
+    <name>ReceiveWidget</name>
     </context>
 <context>
     <name>RecentRequestsTableModel</name>
@@ -278,37 +322,95 @@
         <translation>Мітка</translation>
     </message>
     <message>
+        <source>Address</source>
+        <translation>Адреса</translation>
+    </message>
+    <message>
         <source>(no label)</source>
         <translation>(без міток)</translation>
     </message>
     </context>
 <context>
-    <name>SendCoinsDialog</name>
+    <name>RequestDialog</name>
     <message>
-        <source>(no label)</source>
-        <translation>(без міток)</translation>
+        <source>Label</source>
+        <translation>Мітка</translation>
     </message>
-</context>
+    </context>
 <context>
-    <name>SendCoinsEntry</name>
+    <name>SendChangeAddressDialog</name>
+    </context>
+<context>
+    <name>SendCustomFeeDialog</name>
+    </context>
+<context>
+    <name>SendMultiRow</name>
+    </context>
+<context>
+    <name>SendWidget</name>
+    </context>
+<context>
+    <name>SettingsBackupWallet</name>
+    </context>
+<context>
+    <name>SettingsBitToolWidget</name>
+    </context>
+<context>
+    <name>SettingsConsoleWidget</name>
+    </context>
+<context>
+    <name>SettingsDisplayOptionsWidget</name>
+    </context>
+<context>
+    <name>SettingsFaqWidget</name>
+    </context>
+<context>
+    <name>SettingsInformationWidget</name>
+    </context>
+<context>
+    <name>SettingsMainOptionsWidget</name>
+    </context>
+<context>
+    <name>SettingsMultisendDialog</name>
+    </context>
+<context>
+    <name>SettingsMultisendWidget</name>
+    </context>
+<context>
+    <name>SettingsSignMessageWidgets</name>
+    </context>
+<context>
+    <name>SettingsWalletOptionsWidget</name>
+    </context>
+<context>
+    <name>SettingsWalletRepairWidget</name>
+    </context>
+<context>
+    <name>SettingsWidget</name>
     </context>
 <context>
     <name>ShutdownWindow</name>
     </context>
 <context>
-    <name>SignVerifyMessageDialog</name>
+    <name>SnackBar</name>
+    </context>
+<context>
+    <name>Splash</name>
     </context>
 <context>
     <name>SplashScreen</name>
+    </context>
+<context>
+    <name>TooltipMenu</name>
+    </context>
+<context>
+    <name>TopBar</name>
     </context>
 <context>
     <name>TrafficGraphWidget</name>
     </context>
 <context>
     <name>TransactionDesc</name>
-    </context>
-<context>
-    <name>TransactionDescDialog</name>
     </context>
 <context>
     <name>TransactionTableModel</name>
@@ -318,45 +420,24 @@
     </message>
     </context>
 <context>
-    <name>TransactionView</name>
-    <message>
-        <source>Comma separated file (*.csv)</source>
-        <translation>Файл, розділений комами (*.csv)</translation>
-    </message>
-    <message>
-        <source>Label</source>
-        <translation>Мітка</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation>Адреса</translation>
-    </message>
-    <message>
-        <source>Exporting Failed</source>
-        <translation>Не вдалося експортувати</translation>
-    </message>
+    <name>TxDetailDialog</name>
     </context>
 <context>
-    <name>UnitDisplayStatusBarControl</name>
-    </context>
-<context>
-    <name>WalletFrame</name>
+    <name>TxRow</name>
     </context>
 <context>
     <name>WalletModel</name>
     </context>
 <context>
-    <name>WalletView</name>
-    <message>
-        <source>&amp;Export</source>
-        <translation>Експорт</translation>
-    </message>
-    <message>
-        <source>Export the data in the current tab to a file</source>
-        <translation>Експортуйтувати дані поточної вкладки у файл</translation>
-    </message>
+    <name>WalletPasswordDialog</name>
+    </context>
+<context>
+    <name>WelcomeContentWidget</name>
     </context>
 <context>
     <name>guapcoin-core</name>
+    </context>
+<context>
+    <name>send</name>
     </context>
 </TS>

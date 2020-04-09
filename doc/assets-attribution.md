@@ -24,8 +24,6 @@ The following is a list of assets used in the bitcoin source and their proper at
 ### Assets Used
 	src/qt/res/icons/address-book.png, src/qt/res/icons/export.png,
 	src/qt/res/icons/history.png, src/qt/res/icons/key.png,
-	src/qt/res/icons/lock_*.png, src/qt/res/icons/overview.png,
-	src/qt/res/icons/receive.png, src/qt/res/icons/send.png,
 	src/qt/res/icons/synced.png, src/qt/res/icons/filesave.png
 
 schollidesign
@@ -48,9 +46,6 @@ md2k7
 * License: You are free to do with these icons as you wish, including selling, copying, modifying etc.
 * License: MIT
 * Site: [https://bitcointalk.org/index.php?topic=15276.0](https://bitcointalk.org/index.php?topic=15276.0)
-
-### Assets Used
-	src/qt/res/icons/transaction*.png
 
 [Everaldo.com](http://www.everaldo.com)
 -----------------------
@@ -100,4 +95,3 @@ Jonas Schnelli
 	src/qt/res/icons/bitcoin.icns, src/qt/res/src/bitcoin.svg,
 	src/qt/res/src/bitcoin.ico, src/qt/res/src/bitcoin.png,
 	src/qt/res/src/bitcoin_testnet.png, docs/bitcoin_logo_doxygen.png,
-	src/qt/res/images/splash.png, src/qt/res/images/splash_testnet.png

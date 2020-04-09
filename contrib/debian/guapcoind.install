@@ -1,2 +1,3 @@
 usr/local/bin/guapcoind usr/bin
 usr/local/bin/guapcoin-cli usr/bin
+debian/examples/guapcoin.conf etc/guapcoin

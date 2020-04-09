@@ -17,13 +17,13 @@ BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
             VALUE "CompanyName",        "Guapcoin"
-            VALUE "FileDescription",    "guapcoin-cli (OSS RPC client for Guapcoin)"
+            VALUE "FileDescription",    "Guapcoin-cli (OSS RPC client for Guapcoin)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
             VALUE "InternalName",       "guapcoin-cli"
             VALUE "LegalCopyright",     COPYRIGHT_STR
             VALUE "LegalTrademarks1",   "Distributed under the MIT/X11 software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."
             VALUE "OriginalFilename",   "guapcoin-cli.exe"
-            VALUE "ProductName",        "guapcoin-cli"
+            VALUE "ProductName",        "Guapcoin-cli"
             VALUE "ProductVersion",     VER_PRODUCTVERSION_STR
         END
     END

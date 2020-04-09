@@ -1,1 +1,2 @@
 contrib/guapcoind.bash-completion	guapcoind
+contrib/guapcoin-cli.bash-completion guapcoin-cli

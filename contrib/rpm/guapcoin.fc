@@ -1,0 +1,8 @@
+/usr/bin/guapcoin-cli		--	gen_context(system_u:object_r:guapcoin_exec_t,s0)
+/usr/sbin/guapcoind		--	gen_context(system_u:object_r:guapcoin_exec_t,s0)
+/usr/lib(64)?/guapcoin/guapcoind		--	gen_context(system_u:object_r:guapcoin_exec_t,s0)
+
+/etc/guapcoin(/.*)?		gen_context(system_u:object_r:guapcoin_conf_t,s0)
+/var/lib/guapcoin(/.*)?		gen_context(system_u:object_r:guapcoin_var_lib_t,s0)
+
+(/var)?/run/guapcoind(/.*)?   gen_context(system_u:object_r:guapcoin_var_run_t,s0)

@@ -1,6 +1,6 @@
 usr/local/bin/guapcoin-qt usr/bin
-share/pixmaps/bitcoin32.xpm usr/share/pixmaps
-share/pixmaps/bitcoin16.xpm usr/share/pixmaps
-share/pixmaps/bitcoin128.png usr/share/pixmaps
+share/pixmaps/guapcoin32.xpm usr/share/pixmaps
+share/pixmaps/guapcoin16.xpm usr/share/pixmaps
+share/pixmaps/guapcoin128.png usr/share/pixmaps
 debian/guapcoin-qt.desktop usr/share/applications
 debian/guapcoin-qt.protocol usr/share/kde4/services/

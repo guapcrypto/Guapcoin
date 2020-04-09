@@ -6,13 +6,20 @@
         <file alias="da">locale/guapcoin_da.qm</file>
         <file alias="de">locale/guapcoin_de.qm</file>
         <file alias="en">locale/guapcoin_en.qm</file>
+        <file alias="en_GB">locale/guapcoin_en_GB.qm</file>
         <file alias="en_US">locale/guapcoin_en_US.qm</file>
+        <file alias="eo">locale/guapcoin_eo.qm</file>
         <file alias="es">locale/guapcoin_es.qm</file>
+        <file alias="es_ES">locale/guapcoin_es_ES.qm</file>
         <file alias="fi">locale/guapcoin_fi.qm</file>
         <file alias="fr_FR">locale/guapcoin_fr_FR.qm</file>
+        <file alias="hi_IN">locale/guapcoin_hi_IN.qm</file>
+        <file alias="hr">locale/guapcoin_hr.qm</file>
+        <file alias="hr_HR">locale/guapcoin_hr_HR.qm</file>
         <file alias="it">locale/guapcoin_it.qm</file>
         <file alias="ja">locale/guapcoin_ja.qm</file>
         <file alias="ko_KR">locale/guapcoin_ko_KR.qm</file>
+        <file alias="lt_LT">locale/guapcoin_lt_LT.qm</file>
         <file alias="nl">locale/guapcoin_nl.qm</file>
         <file alias="pl">locale/guapcoin_pl.qm</file>
         <file alias="pt">locale/guapcoin_pt.qm</file>
@@ -23,6 +30,7 @@
         <file alias="sv">locale/guapcoin_sv.qm</file>
         <file alias="tr">locale/guapcoin_tr.qm</file>
         <file alias="uk">locale/guapcoin_uk.qm</file>
+        <file alias="vi">locale/guapcoin_vi.qm</file>
         <file alias="zh_CN">locale/guapcoin_zh_CN.qm</file>
         <file alias="zh_TW">locale/guapcoin_zh_TW.qm</file>
     </qresource>

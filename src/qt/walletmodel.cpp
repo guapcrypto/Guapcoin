@@ -299,11 +299,11 @@ bool WalletModel::validateStakingAddress(const QString& address) {
     if (validateAddress(address)) {
         // check for staking only addresses
         QChar firstLetter = address.at(0).toLower();
-        if (isTestNetwork() && firstLetter == 'P')
+        if (isTestNetwork() && firstLetter == 'p')
             return true;
 
         // mainnet check
-        if (firstLetter == 'P')
+        if (firstLetter == 'p')
             return true;
     }
     return false;

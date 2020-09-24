@@ -1,3 +1,4 @@
+// Copyright (c) 2019-2020 The PIVX developers
 // Copyright (c) 2019-2020 The Guapcoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -18,16 +19,17 @@
 #include "qt/guapcoin/defaultdialog.h"
 #include "qt/guapcoin/settings/settingsfaqwidget.h"
 
-#include <QDesktopWidget>
-#include <QHBoxLayout>
-#include <QVBoxLayout>
+#include "init.h"
+#include "util.h"
+
 #include <QApplication>
 #include <QColor>
-#include <QShortcut>
+#include <QHBoxLayout>
 #include <QKeySequence>
+#include <QScreen>
+#include <QShortcut>
 #include <QWindowStateChangeEvent>
 
-#include "util.h"
 
 #define BASE_WINDOW_WIDTH 1200
 #define BASE_WINDOW_HEIGHT 740
@@ -47,7 +49,7 @@ GuapcoinGUI::GuapcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) :
 
 
     // Adapt screen size
-    QRect rec = QApplication::desktop()->screenGeometry();
+    QRect rec = QGuiApplication::primaryScreen()->geometry();
     int adaptedHeight = (rec.height() < BASE_WINDOW_HEIGHT) ?  BASE_WINDOW_MIN_HEIGHT : BASE_WINDOW_HEIGHT;
     int adaptedWidth = (rec.width() < BASE_WINDOW_WIDTH) ?  BASE_WINDOW_MIN_WIDTH : BASE_WINDOW_WIDTH;
     GUIUtil::restoreWindowGeometry(
@@ -65,23 +67,18 @@ GuapcoinGUI::GuapcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) :
 
     QString windowTitle = QString::fromStdString(GetArg("-windowtitle", ""));
     if (windowTitle.isEmpty()) {
-        windowTitle = tr("Guapcoin Core") + " - ";
+        windowTitle = tr("Guapcoin") + " - ";
         windowTitle += ((enableWallet) ? tr("Wallet") : tr("Node"));
     }
     windowTitle += " " + networkStyle->getTitleAddText();
     setWindowTitle(windowTitle);
 
-#ifndef Q_OS_MAC
     QApplication::setWindowIcon(networkStyle->getAppIcon());
     setWindowIcon(networkStyle->getAppIcon());
-#else
-    MacDockIconHandler::instance()->setIcon(networkStyle->getAppIcon());
-#endif
 
 #ifdef ENABLE_WALLET
     // Create wallet frame
-    if(enableWallet){
-
+    if (enableWallet) {
         QFrame* centralWidget = new QFrame(this);
         this->setMinimumWidth(BASE_WINDOW_MIN_WIDTH);
         this->setMinimumHeight(BASE_WINDOW_MIN_HEIGHT);
@@ -169,7 +166,8 @@ GuapcoinGUI::GuapcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) :
 
 }
 
-void GuapcoinGUI::createActions(const NetworkStyle* networkStyle){
+void GuapcoinGUI::createActions(const NetworkStyle* networkStyle)
+{
     toggleHideAction = new QAction(networkStyle->getAppIcon(), tr("&Show / Hide"), this);
     toggleHideAction->setStatusTip(tr("Show or hide the main Window"));
 
@@ -178,14 +176,15 @@ void GuapcoinGUI::createActions(const NetworkStyle* networkStyle){
     quitAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
     quitAction->setMenuRole(QAction::QuitRole);
 
-    connect(toggleHideAction, SIGNAL(triggered()), this, SLOT(toggleHidden()));
-    connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
+    connect(toggleHideAction, &QAction::triggered, this, &GuapcoinGUI::toggleHidden);
+    connect(quitAction, &QAction::triggered, qApp, &QApplication::quit);
 }
 
 /**
  * Here add every event connection
  */
-void GuapcoinGUI::connectActions() {
+void GuapcoinGUI::connectActions()
+{
     QShortcut *consoleShort = new QShortcut(this);
     consoleShort->setKey(QKeySequence(SHORT_KEY + Qt::Key_C));
     connect(consoleShort, &QShortcut::activated, [this](){
@@ -208,10 +207,11 @@ void GuapcoinGUI::connectActions() {
 }
 
 
-void GuapcoinGUI::createTrayIcon(const NetworkStyle* networkStyle) {
+void GuapcoinGUI::createTrayIcon(const NetworkStyle* networkStyle)
+{
 #ifndef Q_OS_MAC
     trayIcon = new QSystemTrayIcon(this);
-    QString toolTip = tr("Guapcoin Core client") + " " + networkStyle->getTitleAddText();
+    QString toolTip = tr("Guapcoin client") + " " + networkStyle->getTitleAddText();
     trayIcon->setToolTip(toolTip);
     trayIcon->setIcon(networkStyle->getAppIcon());
     trayIcon->hide();
@@ -219,8 +219,8 @@ void GuapcoinGUI::createTrayIcon(const NetworkStyle* networkStyle) {
     notificator = new Notificator(QApplication::applicationName(), trayIcon, this);
 }
 
-//
-GuapcoinGUI::~GuapcoinGUI() {
+GuapcoinGUI::~GuapcoinGUI()
+{
     // Unsubscribe from notifications from core
     unsubscribeFromCoreSignals();
 
@@ -234,16 +234,17 @@ GuapcoinGUI::~GuapcoinGUI() {
 
 
 /** Get restart command-line parameters and request restart */
-void GuapcoinGUI::handleRestart(QStringList args){
+void GuapcoinGUI::handleRestart(QStringList args)
+{
     if (!ShutdownRequested())
         Q_EMIT requestedRestart(args);
 }
 
 
-void GuapcoinGUI::setClientModel(ClientModel* clientModel) {
+void GuapcoinGUI::setClientModel(ClientModel* clientModel)
+{
     this->clientModel = clientModel;
-    if(this->clientModel) {
-
+    if (this->clientModel) {
         // Create system tray menu (or setup the dock menu) that late to prevent users from calling actions,
         // while the client has not yet fully loaded
         createTrayIconMenu();
@@ -254,9 +255,9 @@ void GuapcoinGUI::setClientModel(ClientModel* clientModel) {
         settingsWidget->setClientModel(clientModel);
 
         // Receive and report messages from client model
-        connect(clientModel, SIGNAL(message(QString, QString, unsigned int)), this, SLOT(message(QString, QString, unsigned int)));
-        connect(topBar, SIGNAL(walletSynced(bool)), dashboard, SLOT(walletSynced(bool)));
-        connect(topBar, SIGNAL(walletSynced(bool)), coldStakingWidget, SLOT(walletSynced(bool)));
+        connect(clientModel, &ClientModel::message, this, &GuapcoinGUI::message);
+        connect(topBar, &TopBar::walletSynced, dashboard, &DashboardWidget::walletSynced);
+        connect(topBar, &TopBar::walletSynced, coldStakingWidget, &ColdStakingWidget::walletSynced);
 
         // Get restart command-line parameters and handle restart
         connect(settingsWidget, &SettingsWidget::handleRestart, [this](QStringList arg){handleRestart(arg);});
@@ -278,29 +279,31 @@ void GuapcoinGUI::setClientModel(ClientModel* clientModel) {
     }
 }
 
-void GuapcoinGUI::createTrayIconMenu() {
+void GuapcoinGUI::createTrayIconMenu()
+{
 #ifndef Q_OS_MAC
-    // return if trayIcon is unset (only on non-Mac OSes)
+    // return if trayIcon is unset (only on non-macOSes)
     if (!trayIcon)
         return;
 
     trayIconMenu = new QMenu(this);
     trayIcon->setContextMenu(trayIconMenu);
 
-    connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
-            this, SLOT(trayIconActivated(QSystemTrayIcon::ActivationReason)));
+    connect(trayIcon, &QSystemTrayIcon::activated, this, &GuapcoinGUI::trayIconActivated);
 #else
-    // Note: On Mac, the dock icon is used to provide the tray's functionality.
+    // Note: On macOS, the Dock icon is used to provide the tray's functionality.
     MacDockIconHandler* dockIconHandler = MacDockIconHandler::instance();
-    dockIconHandler->setMainWindow((QMainWindow*)this);
-    trayIconMenu = dockIconHandler->dockMenu();
+    connect(dockIconHandler, &MacDockIconHandler::dockIconClicked, this, &GuapcoinGUI::macosDockIconActivated);
+
+    trayIconMenu = new QMenu(this);
+    trayIconMenu->setAsDockMenu();
 #endif
 
-    // Configuration of the tray icon (or dock icon) icon menu
+    // Configuration of the tray icon (or Dock icon) icon menu
     trayIconMenu->addAction(toggleHideAction);
     trayIconMenu->addSeparator();
 
-#ifndef Q_OS_MAC // This is built-in on Mac
+#ifndef Q_OS_MAC // This is built-in on macOS
     trayIconMenu->addSeparator();
     trayIconMenu->addAction(quitAction);
 #endif
@@ -314,6 +317,12 @@ void GuapcoinGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
         toggleHidden();
     }
 }
+#else
+void GuapcoinGUI::macosDockIconActivated()
+ {
+     show();
+     activateWindow();
+ }
 #endif
 
 void GuapcoinGUI::changeEvent(QEvent* e)
@@ -324,7 +333,7 @@ void GuapcoinGUI::changeEvent(QEvent* e)
         if (clientModel && clientModel->getOptionsModel() && clientModel->getOptionsModel()->getMinimizeToTray()) {
             QWindowStateChangeEvent* wsevt = static_cast<QWindowStateChangeEvent*>(e);
             if (!(wsevt->oldState() & Qt::WindowMinimized) && isMinimized()) {
-                QTimer::singleShot(0, this, SLOT(hide()));
+                QTimer::singleShot(0, this, &GuapcoinGUI::hide);
                 e->ignore();
             }
         }
@@ -345,16 +354,18 @@ void GuapcoinGUI::closeEvent(QCloseEvent* event)
 }
 
 
-void GuapcoinGUI::messageInfo(const QString& text){
-    if(!this->snackBar) this->snackBar = new SnackBar(this, this);
+void GuapcoinGUI::messageInfo(const QString& text)
+{
+    if (!this->snackBar) this->snackBar = new SnackBar(this, this);
     this->snackBar->setText(text);
     this->snackBar->resize(this->width(), snackBar->height());
     openDialog(this->snackBar, this);
 }
 
 
-void GuapcoinGUI::message(const QString& title, const QString& message, unsigned int style, bool* ret) {
-    QString strTitle =  tr("Guapcoin Core"); // default title
+void GuapcoinGUI::message(const QString& title, const QString& message, unsigned int style, bool* ret)
+{
+    QString strTitle =  tr("Guapcoin"); // default title
     // Default to information icon
     int nNotifyIcon = Notificator::Information;
 
@@ -392,18 +403,18 @@ void GuapcoinGUI::message(const QString& title, const QString& message, unsigned
         // Check for buttons, use OK as default, if none was supplied
         int r = 0;
         showNormalIfMinimized();
-        if(style & CClientUIInterface::BTN_MASK){
+        if (style & CClientUIInterface::BTN_MASK) {
             r = openStandardDialog(
                     (title.isEmpty() ? strTitle : title), message, "OK", "CANCEL"
                 );
-        }else{
+        } else {
             r = openStandardDialog((title.isEmpty() ? strTitle : title), message, "OK");
         }
         if (ret != NULL)
             *ret = r;
-    } else if(style & CClientUIInterface::MSG_INFORMATION_SNACK){
+    } else if (style & CClientUIInterface::MSG_INFORMATION_SNACK) {
         messageInfo(message);
-    }else {
+    } else {
         // Append title to "Guapcoin - "
         if (!msgType.isEmpty())
             strTitle += " - " + msgType;
@@ -411,7 +422,8 @@ void GuapcoinGUI::message(const QString& title, const QString& message, unsigned
     }
 }
 
-bool GuapcoinGUI::openStandardDialog(QString title, QString body, QString okBtn, QString cancelBtn){
+bool GuapcoinGUI::openStandardDialog(QString title, QString body, QString okBtn, QString cancelBtn)
+{
     DefaultDialog *dialog;
     if (isVisible()) {
         showHide(true);
@@ -422,7 +434,7 @@ bool GuapcoinGUI::openStandardDialog(QString title, QString body, QString okBtn,
     } else {
         dialog = new DefaultDialog();
         dialog->setText(title, body, okBtn);
-        dialog->setWindowTitle(tr("Guapcoin Core"));
+        dialog->setWindowTitle(tr("Guapcoin"));
         dialog->adjustSize();
         dialog->raise();
         dialog->exec();
@@ -433,28 +445,24 @@ bool GuapcoinGUI::openStandardDialog(QString title, QString body, QString okBtn,
 }
 
 
-void GuapcoinGUI::showNormalIfMinimized(bool fToggleHidden) {
+void GuapcoinGUI::showNormalIfMinimized(bool fToggleHidden)
+{
     if (!clientModel)
         return;
-    // activateWindow() (sometimes) helps with keyboard focus on Windows
-    if (isHidden()) {
-        show();
-        activateWindow();
-    } else if (isMinimized()) {
-        showNormal();
-        activateWindow();
-    } else if (GUIUtil::isObscured(this)) {
-        raise();
-        activateWindow();
-    } else if (fToggleHidden)
+    if (!isHidden() && !isMinimized() && !GUIUtil::isObscured(this) && fToggleHidden) {
         hide();
+    } else {
+        GUIUtil::bringToFront(this);
+    }
 }
 
-void GuapcoinGUI::toggleHidden() {
+void GuapcoinGUI::toggleHidden()
+{
     showNormalIfMinimized(true);
 }
 
-void GuapcoinGUI::detectShutdown() {
+void GuapcoinGUI::detectShutdown()
+{
     if (ShutdownRequested()) {
         if (rpcConsole)
             rpcConsole->hide();
@@ -462,26 +470,31 @@ void GuapcoinGUI::detectShutdown() {
     }
 }
 
-void GuapcoinGUI::goToDashboard(){
-    if(stackedContainer->currentWidget() != dashboard){
+void GuapcoinGUI::goToDashboard()
+{
+    if (stackedContainer->currentWidget() != dashboard) {
         stackedContainer->setCurrentWidget(dashboard);
         topBar->showBottom();
     }
 }
 
-void GuapcoinGUI::goToSend(){
+void GuapcoinGUI::goToSend()
+{
     showTop(sendWidget);
 }
 
-void GuapcoinGUI::goToAddresses(){
+void GuapcoinGUI::goToAddresses()
+{
     showTop(addressesWidget);
 }
 
-void GuapcoinGUI::goToMasterNodes(){
+void GuapcoinGUI::goToMasterNodes()
+{
     showTop(masterNodesWidget);
 }
 
-void GuapcoinGUI::goToColdStaking(){
+void GuapcoinGUI::goToColdStaking()
+{
     showTop(coldStakingWidget);
 }
 
@@ -489,18 +502,33 @@ void GuapcoinGUI::goToSettings(){
     showTop(settingsWidget);
 }
 
-void GuapcoinGUI::goToReceive(){
+void GuapcoinGUI::goToSettingsInfo()
+{
+    navMenu->selectSettings();
+    settingsWidget->showInformation();
+    goToSettings();
+}
+
+void GuapcoinGUI::goToReceive()
+{
     showTop(receiveWidget);
 }
 
-void GuapcoinGUI::showTop(QWidget* view){
-    if(stackedContainer->currentWidget() != view){
+void GuapcoinGUI::openNetworkMonitor()
+{
+    settingsWidget->openNetworkMonitor();
+}
+
+void GuapcoinGUI::showTop(QWidget* view)
+{
+    if (stackedContainer->currentWidget() != view) {
         stackedContainer->setCurrentWidget(view);
         topBar->showTop();
     }
 }
 
-void GuapcoinGUI::changeTheme(bool isLightTheme){
+void GuapcoinGUI::changeTheme(bool isLightTheme)
+{
 
     QString css = GUIUtil::loadStyleSheet();
     this->setStyleSheet(css);
@@ -512,7 +540,8 @@ void GuapcoinGUI::changeTheme(bool isLightTheme){
     updateStyle(this);
 }
 
-void GuapcoinGUI::resizeEvent(QResizeEvent* event){
+void GuapcoinGUI::resizeEvent(QResizeEvent* event)
+{
     // Parent..
     QMainWindow::resizeEvent(event);
     // background
@@ -521,19 +550,21 @@ void GuapcoinGUI::resizeEvent(QResizeEvent* event){
     Q_EMIT windowResizeEvent(event);
 }
 
-bool GuapcoinGUI::execDialog(QDialog *dialog, int xDiv, int yDiv){
+bool GuapcoinGUI::execDialog(QDialog *dialog, int xDiv, int yDiv)
+{
     return openDialogWithOpaqueBackgroundY(dialog, this);
 }
 
-void GuapcoinGUI::showHide(bool show){
-    if(!op) op = new QLabel(this);
-    if(!show){
+void GuapcoinGUI::showHide(bool show)
+{
+    if (!op) op = new QLabel(this);
+    if (!show) {
         op->setVisible(false);
         opEnabled = false;
-    }else{
+    } else {
         QColor bg("#000000");
         bg.setAlpha(200);
-        if(!isLightTheme()){
+        if (!isLightTheme()) {
             bg = QColor("#00000000");
             bg.setAlpha(150);
         }
@@ -552,11 +583,13 @@ void GuapcoinGUI::showHide(bool show){
     }
 }
 
-int GuapcoinGUI::getNavWidth(){
+int GuapcoinGUI::getNavWidth()
+{
     return this->navMenu->width();
 }
 
-void GuapcoinGUI::openFAQ(int section){
+void GuapcoinGUI::openFAQ(int section)
+{
     showHide(true);
     SettingsFaqWidget* dialog = new SettingsFaqWidget(this);
     if (section > 0) dialog->setSection(section);
@@ -569,7 +602,7 @@ void GuapcoinGUI::openFAQ(int section){
 bool GuapcoinGUI::addWallet(const QString& name, WalletModel* walletModel)
 {
     // Single wallet supported for now..
-    if(!stackedContainer || !clientModel || !walletModel)
+    if (!stackedContainer || !clientModel || !walletModel)
         return false;
 
     // set the model for every view
@@ -584,8 +617,9 @@ bool GuapcoinGUI::addWallet(const QString& name, WalletModel* walletModel)
     settingsWidget->setWalletModel(walletModel);
 
     // Connect actions..
+    connect(walletModel, &WalletModel::message, this, &GuapcoinGUI::message);
     connect(masterNodesWidget, &MasterNodesWidget::message, this, &GuapcoinGUI::message);
-    connect(coldStakingWidget, &MasterNodesWidget::message, this, &GuapcoinGUI::message);
+    connect(coldStakingWidget, &ColdStakingWidget::message, this, &GuapcoinGUI::message);
     connect(topBar, &TopBar::message, this, &GuapcoinGUI::message);
     connect(sendWidget, &SendWidget::message,this, &GuapcoinGUI::message);
     connect(receiveWidget, &ReceiveWidget::message,this, &GuapcoinGUI::message);
@@ -593,23 +627,26 @@ bool GuapcoinGUI::addWallet(const QString& name, WalletModel* walletModel)
     connect(settingsWidget, &SettingsWidget::message, this, &GuapcoinGUI::message);
 
     // Pass through transaction notifications
-    connect(dashboard, SIGNAL(incomingTransaction(QString, int, CAmount, QString, QString)), this, SLOT(incomingTransaction(QString, int, CAmount, QString, QString)));
+    connect(dashboard, &DashboardWidget::incomingTransaction, this, &GuapcoinGUI::incomingTransaction);
 
     return true;
 }
 
-bool GuapcoinGUI::setCurrentWallet(const QString& name) {
+bool GuapcoinGUI::setCurrentWallet(const QString& name)
+{
     // Single wallet supported.
     return true;
 }
 
-void GuapcoinGUI::removeAllWallets() {
+void GuapcoinGUI::removeAllWallets()
+{
     // Single wallet supported.
 }
 
-void GuapcoinGUI::incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address) {
+void GuapcoinGUI::incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address)
+{
     // Only send notifications when not disabled
-    if(!bdisableSystemnotifications){
+    if (!bdisableSystemnotifications) {
         // On new transaction, make an info balloon
         message((amount) < 0 ? (pwalletMain->fMultiSendNotify == true ? tr("Sent MultiSend transaction") : tr("Sent transaction")) : tr("Incoming transaction"),
             tr("Date: %1\n"

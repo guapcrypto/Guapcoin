@@ -2,8 +2,8 @@
 
 [Desktop Entry]
 Encoding=UTF-8
-Name=Guapcoin Core
-Comment=Guapcoin Core QT main network
+Name=Guapcoin
+Comment=Guapcoin QT main network
 GenericName=Guapcoin Digital Currency QT client main network
 Exec=guapcoin-core.qt %u
 Terminal=false
@@ -11,5 +11,5 @@ Type=Application
 Icon=${SNAP}/share/pixmaps/guapcoin.png
 MimeType=x-scheme-handler/guapcoin;
 Categories=X-Office;X-Finance;
-Keywords=internet;guapcoin;guap;core;wallet;qt;main;snap;launchpad;crypto;digital;currency;coin;token;
+Keywords=internet;guapcoin;guap;core;wallet;qt;main;snap;launchpad;crypto;digital;currency;coin;token;zerocoin;
 Version=1.0

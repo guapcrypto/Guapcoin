@@ -8,12 +8,12 @@
 
 #include "chainparamsbase.h"
 #include "clientversion.h"
+#include "fs.h"
 #include "rpc/client.h"
 #include "rpc/protocol.h"
 #include "util.h"
 #include "utilstrencodings.h"
 
-#include <boost/filesystem/operations.hpp>
 #include <stdio.h>
 
 #include <event2/event.h>
@@ -72,10 +72,10 @@ static bool AppInitRPC(int argc, char* argv[])
     //
     ParseParameters(argc, argv);
     if (argc < 2 || mapArgs.count("-?") || mapArgs.count("-help") || mapArgs.count("-version")) {
-        std::string strUsage = _("Guapcoin Core RPC client version") + " " + FormatFullVersion() + "\n";
+        std::string strUsage = _("Guapcoin RPC client version") + " " + FormatFullVersion() + "\n";
         if (!mapArgs.count("-version")) {
             strUsage += "\n" + _("Usage:") + "\n" +
-                        "  guapcoin-cli [options] <command> [params]  " + _("Send command to Guapcoin Core") + "\n" +
+                        "  guapcoin-cli [options] <command> [params]  " + _("Send command to Guapcoin") + "\n" +
                         "  guapcoin-cli [options] help                " + _("List commands") + "\n" +
                         "  guapcoin-cli [options] help <command>      " + _("Get help for a command") + "\n";
 
@@ -85,7 +85,7 @@ static bool AppInitRPC(int argc, char* argv[])
         fprintf(stdout, "%s", strUsage.c_str());
         return false;
     }
-    if (!boost::filesystem::is_directory(GetDataDir(false))) {
+    if (!fs::is_directory(GetDataDir(false))) {
         fprintf(stderr, "Error: Specified data directory \"%s\" does not exist.\n", mapArgs["-datadir"].c_str());
         return false;
     }
@@ -183,7 +183,7 @@ UniValue CallRPC(const std::string& strMethod, const UniValue& params)
     evhttp_add_header(output_headers, "Authorization", (std::string("Basic ") + EncodeBase64(strRPCUserColonPass)).c_str());
 
     // Attach request data
-    std::string strRequest = JSONRPCRequest(strMethod, params, 1);
+    std::string strRequest = JSONRPCRequestObj(strMethod, params, 1).write() + "\n";
     struct evbuffer * output_buffer = evhttp_request_get_output_buffer(req);
     assert(output_buffer);
     evbuffer_add(output_buffer, strRequest.data(), strRequest.size());

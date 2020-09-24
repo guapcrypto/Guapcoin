@@ -20,6 +20,7 @@
 
 #include <QCloseEvent>
 #include <QDesktopWidget>
+#include <QScreen>
 
 #include <iostream>
 
@@ -27,7 +28,7 @@ Splash::Splash(Qt::WindowFlags f, const NetworkStyle* networkStyle) :
     QWidget(0, f), ui(new Ui::Splash)
 {
     ui->setupUi(this);
-    QString titleText = tr("Guapcoin Core");
+    QString titleText = tr("Guapcoin");
     QString titleAddText = networkStyle->getTitleAddText();
     setWindowTitle(titleText + " " + titleAddText);
 
@@ -48,7 +49,7 @@ Splash::Splash(Qt::WindowFlags f, const NetworkStyle* networkStyle) :
     QRect r(QPoint(), size());
     resize(r.size());
     setFixedSize(r.size());
-    move(QApplication::desktop()->screenGeometry().center() - r.center());
+    move(QGuiApplication::primaryScreen()->geometry().center() - r.center());
 
     subscribeToCoreSignals();
 }

@@ -37,7 +37,7 @@ Source30:	https://raw.githubusercontent.com/guapcoin-project/guapcoin/v%{version
 Source31:	https://raw.githubusercontent.com/guapcoin-project/guapcoin/v%{version}/contrib/rpm/guapcoin.fc
 Source32:	https://raw.githubusercontent.com/guapcoin-project/guapcoin/v%{version}/contrib/rpm/guapcoin.if
 
-Source100:	https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.png
+Source100:	https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg
 
 %if 0%{?_use_libressl:1}
 BuildRequires:	libressl-devel
@@ -311,8 +311,6 @@ rm -f %{buildroot}%{_bindir}/test_*
 
 %check
 make check
-srcdir=src test/guapcoin-util-test.py
-test/functional/test_runner.py --extended
 
 %post libs -p /sbin/ldconfig
 

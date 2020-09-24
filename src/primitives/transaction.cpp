@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
-// Copyright (c) 2015-2019 The PIVX developers
+// Copyright (c) 2015-2020 The PIVX developers
 // Copyright (c) 2019-2020 The Guapcoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -55,7 +55,7 @@ std::string CTxIn::ToString() const
     if (prevout.IsNull())
             str += strprintf(", coinbase %s", HexStr(scriptSig));
     else
-        str += strprintf(", scriptSig=%s", scriptSig.ToString().substr(0,24));
+        str += strprintf(", scriptSig=%s", HexStr(scriptSig).substr(0, 24));
     if (nSequence != std::numeric_limits<unsigned int>::max())
         str += strprintf(", nSequence=%u", nSequence);
     str += ")";
@@ -69,22 +69,31 @@ CTxOut::CTxOut(const CAmount& nValueIn, CScript scriptPubKeyIn)
     nRounds = -10;
 }
 
-bool COutPoint::IsMasternodeReward(const CTransaction* tx) const
-{
-    if(!tx->IsCoinStake())
-        return false;
-
-    return (n == tx->vout.size() - 1) && (tx->vout[1].scriptPubKey != tx->vout[n].scriptPubKey);
-}
-
 uint256 CTxOut::GetHash() const
 {
     return SerializeHash(*this);
 }
 
+bool CTxOut::GetKeyIDFromUTXO(CKeyID& keyIDRet) const
+{
+    std::vector<valtype> vSolutions;
+    txnouttype whichType;
+    if (scriptPubKey.empty() || !Solver(scriptPubKey, whichType, vSolutions))
+        return false;
+    if (whichType == TX_PUBKEY) {
+        keyIDRet = CPubKey(vSolutions[0]).GetID();
+        return true;
+    }
+    if (whichType == TX_PUBKEYHASH || whichType == TX_COLDSTAKE) {
+        keyIDRet = CKeyID(uint160(vSolutions[0]));
+        return true;
+    }
+    return false;
+}
+
 std::string CTxOut::ToString() const
 {
-    return strprintf("CTxOut(nValue=%d.%08d, scriptPubKey=%s)", nValue / COIN, nValue % COIN, scriptPubKey.ToString().substr(0,30));
+    return strprintf("CTxOut(nValue=%d.%08d, scriptPubKey=%s)", nValue / COIN, nValue % COIN, HexStr(scriptPubKey).substr(0,30));
 }
 
 CMutableTransaction::CMutableTransaction() : nVersion(CTransaction::CURRENT_VERSION), nLockTime(0) {}
@@ -115,7 +124,12 @@ void CTransaction::UpdateHash() const
     *const_cast<uint256*>(&hash) = SerializeHash(*this);
 }
 
-CTransaction::CTransaction() : hash(), nVersion(CTransaction::CURRENT_VERSION), vin(), vout(), nLockTime(0) { }
+size_t CTransaction::DynamicMemoryUsage() const
+{
+    return memusage::RecursiveDynamicUsage(vin) + memusage::RecursiveDynamicUsage(vout);
+}
+
+CTransaction::CTransaction() : nVersion(CTransaction::CURRENT_VERSION), vin(), vout(), nLockTime(0) { }
 
 CTransaction::CTransaction(const CMutableTransaction &tx) : nVersion(tx.nVersion), vin(tx.vin), vout(tx.vout), nLockTime(tx.nLockTime) {
     UpdateHash();
@@ -135,8 +149,7 @@ bool CTransaction::IsCoinStake() const
     if (vin.empty())
         return false;
 
-    // ppcoin: the coin stake transaction is marked with the first output empty
-	if (vin[0].prevout.IsNull())
+    if (vin[0].prevout.IsNull())
         return false;
 
     return (vout.size() >= 2 && vout[0].IsEmpty());
@@ -192,26 +205,6 @@ CAmount CTransaction::GetValueOut() const
     }
     return nValueOut;
 }
-
-bool CTransaction::UsesUTXO(const COutPoint out)
-{
-    for (const CTxIn& in : vin) {
-        if (in.prevout == out)
-            return true;
-    }
-
-    return false;
-}
-
-std::list<COutPoint> CTransaction::GetOutPoints() const
-{
-    std::list<COutPoint> listOutPoints;
-    uint256 txHash = GetHash();
-    for (unsigned int i = 0; i < vout.size(); i++)
-        listOutPoints.emplace_back(COutPoint(txHash, i));
-    return listOutPoints;
-}
-
 
 double CTransaction::ComputePriority(double dPriorityInputs, unsigned int nTxSize) const
 {

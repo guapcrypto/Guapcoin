@@ -1,3 +1,4 @@
+// Copyright (c) 2019-2020 The PIVX developers
 // Copyright (c) 2019-2020 The Guapcoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -5,13 +6,16 @@
 #ifndef MASTERNODESWIDGET_H
 #define MASTERNODESWIDGET_H
 
-#include <QWidget>
 #include "qt/guapcoin/pwidget.h"
 #include "qt/guapcoin/furabstractlistitemdelegate.h"
 #include "qt/guapcoin/mnmodel.h"
 #include "qt/guapcoin/tooltipmenu.h"
-#include <QTimer>
+#include "walletmodel.h"
+
 #include <atomic>
+
+#include <QTimer>
+#include <QWidget>
 
 class GuapcoinGUI;
 

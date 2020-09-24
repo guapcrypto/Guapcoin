@@ -1,7 +1,7 @@
 Translation Strings Policy
 ===========================
 
-This document provides guidelines for internationalization of the Guapcoin Core software.
+This document provides guidelines for internationalization of the Guapcoin software.
 
 How to translate?
 ------------------

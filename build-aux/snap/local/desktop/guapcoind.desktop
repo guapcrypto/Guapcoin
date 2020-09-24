@@ -2,7 +2,7 @@
 
 [Desktop Entry]
 Encoding=UTF-8
-Name=Guapcoin Core Daemon SNAP
+Name=Guapcoin Daemon SNAP
 Comment=main
 GenericName=Guapcoin Digital Currency Daemon Client main network
 Exec=guapcoin-core.daemon %u
@@ -11,5 +11,5 @@ Type=Application
 Icon=${SNAP}/share/pixmaps/guapcoin.png
 MimeType=x-scheme-handler/guap;
 Categories=X-Office;X-Finance;
-Keywords=internet;guapcoin;core;wallet;daemon;main;snap;launchpad;crypto;digital;currency;coin;token;
+Keywords=internet;guapcoin;zguap;core;wallet;daemon;main;snap;launchpad;crypto;digital;currency;coin;token;zerocoin;
 Version=1.0

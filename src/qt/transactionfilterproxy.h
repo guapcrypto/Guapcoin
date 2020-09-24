@@ -91,6 +91,7 @@ private:
     bool fOnlyStakes = false;
     bool fOnlyColdStaking = false;
 
+    bool isZcTx(int type) const;
     bool isStakeTx(int type) const;
     bool isColdStake(int type) const;
 };

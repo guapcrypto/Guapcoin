@@ -456,8 +456,8 @@ https://www.transifex.com/guapcoin-project/guapcoin-project-translations</string
         </layout>
        </item>
        <item>
-        <widget class="QWidget" name="verticalguapDisplayWidget" native="true">
-         <layout class="QVBoxLayout" name="verticalguapDisplayLayout">
+        <widget class="QWidget" name="verticalguapcoinDisplayWidget" native="true">
+         <layout class="QVBoxLayout" name="verticalguapcoinDisplayLayout">
           <property name="margin">
            <number>0</number>
           </property>

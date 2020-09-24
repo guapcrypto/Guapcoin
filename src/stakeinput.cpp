@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2019 The PIVX developers
+// Copyright (c) 2017-2020 The PIVX developers
 // Copyright (c) 2019-2020 The Guapcoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -10,32 +10,63 @@
 #include "txdb.h"
 #include "wallet/wallet.h"
 
+bool CGuapcoinStake::InitFromTxIn(const CTxIn& txin)
+{
+    // Find the previous transaction in database
+    uint256 hashBlock;
+    CTransaction txPrev;
+    if (!GetTransaction(txin.prevout.hash, txPrev, hashBlock, true))
+        return error("%s : INFO: read txPrev failed, tx id prev: %s", __func__, txin.prevout.hash.GetHex());
+    SetPrevout(txPrev, txin.prevout.n);
 
-bool CGuapStake::SetInput(CTransaction txPrev, unsigned int n)
+    // Find the index of the block of the previous transaction
+    if (mapBlockIndex.count(hashBlock)) {
+        CBlockIndex* pindex = mapBlockIndex.at(hashBlock);
+        if (chainActive.Contains(pindex)) pindexFrom = pindex;
+    }
+    // Check that the input is in the active chain
+    if (!pindexFrom)
+        return error("%s : Failed to find the block index for stake origin", __func__);
+
+    // All good
+    return true;
+}
+
+bool CGuapcoinStake::SetPrevout(CTransaction txPrev, unsigned int n)
 {
     this->txFrom = txPrev;
     this->nPosition = n;
     return true;
 }
 
-bool CGuapStake::GetTxFrom(CTransaction& tx) const
+bool CGuapcoinStake::GetTxFrom(CTransaction& tx) const
 {
+    if (txFrom.IsNull())
+        return false;
     tx = txFrom;
     return true;
 }
 
-bool CGuapStake::CreateTxIn(CWallet* pwallet, CTxIn& txIn, uint256 hashTxOut)
+bool CGuapcoinStake::GetTxOutFrom(CTxOut& out) const
+{
+    if (txFrom.IsNull() || nPosition >= txFrom.vout.size())
+        return false;
+    out = txFrom.vout[nPosition];
+    return true;
+}
+
+bool CGuapcoinStake::CreateTxIn(CWallet* pwallet, CTxIn& txIn, uint256 hashTxOut)
 {
     txIn = CTxIn(txFrom.GetHash(), nPosition);
     return true;
 }
 
-CAmount CGuapStake::GetValue() const
+CAmount CGuapcoinStake::GetValue() const
 {
     return txFrom.vout[nPosition].nValue;
 }
 
-bool CGuapStake::CreateTxOuts(CWallet* pwallet, std::vector<CTxOut>& vout, CAmount nTotal)
+bool CGuapcoinStake::CreateTxOuts(CWallet* pwallet, std::vector<CTxOut>& vout, CAmount nTotal)
 {
     std::vector<valtype> vSolutions;
     txnouttype whichType;
@@ -85,7 +116,7 @@ bool CGuapStake::CreateTxOuts(CWallet* pwallet, std::vector<CTxOut>& vout, CAmou
     return true;
 }
 
-CDataStream CGuapStake::GetUniqueness() const
+CDataStream CGuapcoinStake::GetUniqueness() const
 {
     //The unique identifier for a GUAP stake is the outpoint
     CDataStream ss(SER_NETWORK, 0);
@@ -94,11 +125,11 @@ CDataStream CGuapStake::GetUniqueness() const
 }
 
 //The block that the UTXO was added to the chain
-CBlockIndex* CGuapStake::GetIndexFrom()
+CBlockIndex* CGuapcoinStake::GetIndexFrom()
 {
     if (pindexFrom)
         return pindexFrom;
-    uint256 hashBlock = 0;
+    uint256 hashBlock = UINT256_ZERO;
     CTransaction tx;
     if (GetTransaction(txFrom.GetHash(), tx, hashBlock, true)) {
         // If the index is in the chain, then set it as the "index from"
@@ -113,3 +144,19 @@ CBlockIndex* CGuapStake::GetIndexFrom()
 
     return pindexFrom;
 }
+
+// Verify stake contextual checks
+bool CGuapcoinStake::ContextCheck(int nHeight, uint32_t nTime)
+{
+    const Consensus::Params& consensus = Params().GetConsensus();
+    // Get Stake input block time/height
+    CBlockIndex* pindexFrom = GetIndexFrom();
+    if (!pindexFrom)
+        return error("%s: unable to get previous index for stake input", __func__);
+    const int nHeightBlockFrom = pindexFrom->nHeight;
+    const uint32_t nTimeBlockFrom = pindexFrom->nTime;
+
+    // All good
+    return true;
+}
+

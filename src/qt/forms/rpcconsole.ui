@@ -244,7 +244,7 @@
           <cursorShape>IBeamCursor</cursorShape>
          </property>
          <property name="text">
-          <string>N/A</string>
+          <string>Total: 0 (IPv4: 0 / IPv6: 0 / Tor: 0 / Unknown: 0)</string>
          </property>
          <property name="textFormat">
           <enum>Qt::PlainText</enum>

@@ -1,8 +1,8 @@
 # Copyright (c) 2018-2019 The Ion developers
-# Copyright (c) 2019 The Guapcoin developers
+# Copyright (c) 2019 The PIVX developers
 name: guapcoin-core
 base: core18
-version: 4.0.99
+version: 4.2.0
 summary:   Guapcoin (Private – Instant – Verified – Transaction)
 description: |
   Guapcoin is an MIT licensed,

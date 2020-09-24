@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#  guapcoind The Guapcoin core server.
+#  guapcoind The Guapcoin server.
 #
 #
 # chkconfig: 345 80 20

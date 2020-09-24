@@ -9,6 +9,7 @@
 #define BITCOIN_QT_TRANSACTIONRECORD_H
 
 #include "amount.h"
+#include "script/script.h"
 #include "uint256.h"
 
 #include <QList>
@@ -84,12 +85,6 @@ public:
         MNReward,
         RecvFromOther,
         SendToSelf,
-        RecvWithObfuscation,
-        ObfuscationDenominate,
-        ObfuscationCollateralPayment,
-        ObfuscationMakeCollaterals,
-        ObfuscationCreateDenominations,
-        Obfuscated,
         StakeDelegated, // Received cold stake (owner)
         StakeHot, // Staked via a delegated P2CS.
         P2CSDelegation, // Non-spendable P2CS, staker side.

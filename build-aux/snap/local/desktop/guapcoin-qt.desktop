@@ -11,5 +11,5 @@ Type=Application
 Icon=${SNAP}/share/pixmaps/guapcoin.png
 MimeType=x-scheme-handler/guapcoin;
 Categories=X-Office;X-Finance;
-Keywords=internet;guapcoin;guap;core;wallet;qt;main;snap;launchpad;crypto;digital;currency;coin;token;zerocoin;
+Keywords=internet;guapcoin;zguap;guap;core;wallet;qt;main;snap;launchpad;crypto;digital;currency;coin;token;zerocoin;
 Version=1.0

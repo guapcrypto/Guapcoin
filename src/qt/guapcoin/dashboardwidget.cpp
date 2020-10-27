@@ -1,4 +1,3 @@
-// Copyright (c) 2019-2020 The PIVX developers
 // Copyright (c) 2019-2020 The Guapcoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -53,8 +52,8 @@ DashboardWidget::DashboardWidget(GuapcoinGUI* parent) :
 
 	// Staking Information
 	setCssSubtitleScreen(ui->labelMessage);
-	setCssProperty(ui->labelSquareGuapcoin, "square-chart-guap");
-	setCssProperty(ui->labelGuapcoin, "text-chart-guap");
+	setCssProperty(ui->labelSquareGuap, "square-chart-guap");
+	setCssProperty(ui->labelGuap, "text-chart-guap");
 
 	// Staking Amount
 	QFont fontBold;

@@ -4,8 +4,8 @@
 
 set -e
 
-BCUSER="guapcoin"
-BCHOME="/var/lib/guapcoin"
+GUAPUSER="guapcoin"
+GUAPHOME="/var/lib/guapcoin"
 
 if [ "$1" = "purge" ]; then
 
@@ -17,14 +17,14 @@ if [ "$1" = "purge" ]; then
 
 	echo
 	echo "#"
-	echo "#  The guapcoin user (${BCUSER}) and data dir (${BCHOME})"
+	echo "#  The guapcoin user (${GUAPUSER}) and data dir (${GUAPHOME})"
 	echo "#  were left intact."
 	echo "#"
-	echo "#  Make sure to check \"${BCHOME}\" for wallets and other"
+	echo "#  Make sure to check \"${GUAPHOME}\" for wallets and other"
 	echo "#  important bits."
 	echo "#"
 	echo "#  After backing up all vital data, cleanup can be completed"
-	echo "#  by running: sudo userdel -r ${BCUSER}"
+	echo "#  by running: sudo userdel -r ${GUAPUSER}"
 	echo "#"
 	echo
 

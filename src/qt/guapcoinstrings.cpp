@@ -9,14 +9,11 @@
 #define UNUSED
 #endif
 static const char UNUSED *guapcoin_strings[] = {
-QT_TRANSLATE_NOOP("guapcoin-core", " mints deleted\n"),
-QT_TRANSLATE_NOOP("guapcoin-core", " mints updated, "),
-QT_TRANSLATE_NOOP("guapcoin-core", " unconfirmed transactions removed\n"),
 QT_TRANSLATE_NOOP("guapcoin-core", ""
 "(1 = keep tx meta data e.g. account owner and payment request information, 2 "
 "= drop tx meta data)"),
 QT_TRANSLATE_NOOP("guapcoin-core", ""
-"Accept connections from outside (default: 1 if no -proxy or -connect/-"
+"Accept connections from outside (default: %u if no -proxy or -connect/-"
 "noconnect)"),
 QT_TRANSLATE_NOOP("guapcoin-core", ""
 "Allow JSON-RPC connections from specified source. Valid for <ip> are a "
@@ -33,8 +30,16 @@ QT_TRANSLATE_NOOP("guapcoin-core", ""
 "notation for IPv6. This option can be specified multiple times (default: "
 "bind to all interfaces)"),
 QT_TRANSLATE_NOOP("guapcoin-core", ""
+"Cannot find the Sapling parameters in the following directory:\n"
+"%s\n"
+"Please run 'sapling-fetch-params' or './util/fetch-params.sh' and then "
+"restart."),
+QT_TRANSLATE_NOOP("guapcoin-core", ""
 "Cannot obtain a lock on data directory %s. Guapcoin is probably already "
 "running."),
+QT_TRANSLATE_NOOP("guapcoin-core", ""
+"Cannot upgrade to Sapling wallet (already running Sapling support). Version: "
+"%d"),
 QT_TRANSLATE_NOOP("guapcoin-core", ""
 "Change automatic finalized budget voting behavior. mode=auto: Vote for only "
 "exact finalized budget match to my generated budget. (string, default: auto)"),
@@ -51,7 +56,10 @@ QT_TRANSLATE_NOOP("guapcoin-core", ""
 "Delete all wallet transactions and only recover those parts of the "
 "blockchain through -rescan on startup"),
 QT_TRANSLATE_NOOP("guapcoin-core", ""
-"Disable all Guapcoin specific functionality (Masternodes, SwiftX, "
+"Delete all zerocoin spends and mints that have been recorded to the "
+"blockchain database and reindex them (0-1, default: %u)"),
+QT_TRANSLATE_NOOP("guapcoin-core", ""
+"Disable all Guapcoin specific functionality (Masternodes, Zerocoin, SwiftX, "
 "Budgeting) (0-1, default: %u)"),
 QT_TRANSLATE_NOOP("guapcoin-core", ""
 "Distributed under the MIT software license, see the accompanying file "
@@ -228,12 +236,12 @@ QT_TRANSLATE_NOOP("guapcoin-core", ""
 "Warning: We do not appear to fully agree with our peers! You may need to "
 "upgrade, or other nodes may need to upgrade."),
 QT_TRANSLATE_NOOP("guapcoin-core", ""
-"Warning: error reading wallet.dat! All keys read correctly, but transaction "
-"data or address book entries might be missing or incorrect."),
+"Warning: error reading %s! All keys read correctly, but transaction data or "
+"address book entries might be missing or incorrect."),
 QT_TRANSLATE_NOOP("guapcoin-core", ""
-"Warning: wallet.dat corrupt, data salvaged! Original wallet.dat saved as "
-"wallet.{timestamp}.bak in %s; if your balance or transactions are incorrect "
-"you should restore from a backup."),
+"Warning: wallet file corrupt, data salvaged! Original %s saved as %s in %s; "
+"if your balance or transactions are incorrect you should restore from a "
+"backup."),
 QT_TRANSLATE_NOOP("guapcoin-core", ""
 "Whitelist peers connecting from the given netmask or IP address. Can be "
 "specified multiple times."),
@@ -243,40 +251,37 @@ QT_TRANSLATE_NOOP("guapcoin-core", ""
 QT_TRANSLATE_NOOP("guapcoin-core", ""
 "You must specify a masternodeprivkey in the configuration. Please see "
 "documentation for help."),
+QT_TRANSLATE_NOOP("guapcoin-core", "%s corrupt, salvage failed"),
 QT_TRANSLATE_NOOP("guapcoin-core", "(default: %s)"),
-QT_TRANSLATE_NOOP("guapcoin-core", "(default: 1)"),
 QT_TRANSLATE_NOOP("guapcoin-core", "(must be %d for %s-net)"),
 QT_TRANSLATE_NOOP("guapcoin-core", "<category> can be:"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Accept command line and JSON-RPC commands"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Accept public REST requests (default: %u)"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Active Masternode not initialized."),
 QT_TRANSLATE_NOOP("guapcoin-core", "Add a node to connect to and attempt to keep the connection open"),
-QT_TRANSLATE_NOOP("guapcoin-core", "Allow DNS lookups for -addnode, -seednode and -connect"),
+QT_TRANSLATE_NOOP("guapcoin-core", "Allow DNS lookups for -addnode, -seednode and -connect (default: %u)"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Allows deprecated RPC method(s) to be used"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Always query for peer addresses via DNS lookup (default: %u)"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Append comment to the user agent string"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Attempt to force blockchain corruption recovery"),
-QT_TRANSLATE_NOOP("guapcoin-core", "Attempt to recover private keys from a corrupt wallet.dat"),
+QT_TRANSLATE_NOOP("guapcoin-core", "Attempt to recover private keys from a corrupt wallet file"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Automatically create Tor hidden service (default: %d)"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Block creation options:"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Can't generate a change-address key. Please call keypoolrefill first."),
 QT_TRANSLATE_NOOP("guapcoin-core", "Cannot create public spend input"),
-QT_TRANSLATE_NOOP("guapcoin-core", "Cannot downgrade wallet"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Cannot resolve -%s address: '%s'"),
-QT_TRANSLATE_NOOP("guapcoin-core", "Cannot upgrade to HD wallet (already running HD support). Version: %d"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Change index out of range"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Connect through SOCKS5 proxy"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Connect to a node to retrieve peer addresses, and disconnect"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Connection options:"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Copyright (C) 2009-%i The Bitcoin Core Developers"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Copyright (C) 2014-%i The Dash Core Developers"),
-QT_TRANSLATE_NOOP("guapcoin-core", "Copyright (C) 2015-%i The PIVX Developers"),
+QT_TRANSLATE_NOOP("guapcoin-core", "Copyright (C) 2015-%i The Guapcoin Developers"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Corrupted block database detected"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Could not parse masternode.conf"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Debugging/Testing options:"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Delete blockchain folders and resync from scratch"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Disable OS notifications for incoming transactions (default: %u)"),
-QT_TRANSLATE_NOOP("guapcoin-core", "Disable safemode, override a real safe mode event (default: %u)"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Discover own IP address (default: 1 when listening and no -externalip)"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Display the stake modifier calculations in the debug.log file."),
 QT_TRANSLATE_NOOP("guapcoin-core", "Display verbose coin stake messages in the debug.log file."),
@@ -293,14 +298,15 @@ QT_TRANSLATE_NOOP("guapcoin-core", "Enable staking functionality (0-1, default: 
 QT_TRANSLATE_NOOP("guapcoin-core", "Enable the client to act as a masternode (0-1, default: %u)"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Error initializing block database"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Error initializing wallet database environment %s!"),
+QT_TRANSLATE_NOOP("guapcoin-core", "Error loading %s: Wallet corrupted"),
+QT_TRANSLATE_NOOP("guapcoin-core", "Error loading %s: Wallet requires newer version of Guapcoin"),
+QT_TRANSLATE_NOOP("guapcoin-core", "Error loading %s\n"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Error loading block database"),
-QT_TRANSLATE_NOOP("guapcoin-core", "Error loading wallet.dat"),
-QT_TRANSLATE_NOOP("guapcoin-core", "Error loading wallet.dat: Wallet corrupted"),
-QT_TRANSLATE_NOOP("guapcoin-core", "Error loading wallet.dat: Wallet requires newer version of Guapcoin"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Error opening block database"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Error reading from database, shutting down."),
+QT_TRANSLATE_NOOP("guapcoin-core", "Error upgrading chainstate database"),
+QT_TRANSLATE_NOOP("guapcoin-core", "Error writing zerocoinDB to disk"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Error"),
-QT_TRANSLATE_NOOP("guapcoin-core", "Error: "),
 QT_TRANSLATE_NOOP("guapcoin-core", "Error: -listen must be true if -masternode is set."),
 QT_TRANSLATE_NOOP("guapcoin-core", "Error: -maxmempool must be at least %d MB"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Error: A fatal internal error occured, see debug.log for details"),
@@ -311,8 +317,12 @@ QT_TRANSLATE_NOOP("guapcoin-core", "Error: No valid utxo!"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Error: Unsupported argument -tor found, use -onion."),
 QT_TRANSLATE_NOOP("guapcoin-core", "Error: Wallet locked, unable to create transaction!"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Failed to accept tx in the memory pool (reason: %s)\n"),
+QT_TRANSLATE_NOOP("guapcoin-core", "Failed to find Zerocoins in wallet database"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Failed to listen on any port. Use -listen=0 if you want this."),
 QT_TRANSLATE_NOOP("guapcoin-core", "Failed to parse host:port string"),
+QT_TRANSLATE_NOOP("guapcoin-core", "Failed to parse public spend"),
+QT_TRANSLATE_NOOP("guapcoin-core", "Failed to select a zerocoin"),
+QT_TRANSLATE_NOOP("guapcoin-core", "Failed to wipe zerocoinDB"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Failed to write coin serial number into wallet"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Fee (in %s/kB) to add to transactions you send (default: %s)"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Force safe mode (default: %u)"),
@@ -361,13 +371,14 @@ QT_TRANSLATE_NOOP("guapcoin-core", "Masternode options:"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Masternodes are required to run on port %d for %s-net"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Maximum per-connection receive buffer, <n>*1000 bytes (default: %u)"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Maximum per-connection send buffer, <n>*1000 bytes (default: %u)"),
+QT_TRANSLATE_NOOP("guapcoin-core", "Mining/Staking options:"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Mint did not make it into blockchain"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Need destination or change address because change is not exact"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Need to specify a port with -whitebind: '%s'"),
 QT_TRANSLATE_NOOP("guapcoin-core", "No error"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Node relay options:"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Not enough file descriptors available."),
-QT_TRANSLATE_NOOP("guapcoin-core", "Number of automatic wallet backups (default: 10)"),
+QT_TRANSLATE_NOOP("guapcoin-core", "Number of automatic wallet backups (default: %d)"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Number of custom location backups to retain (default: %d)"),
 QT_TRANSLATE_NOOP("guapcoin-core", "On first run, create a legacy wallet instead of a HD wallet"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Only accept block chain matching built-in checkpoints (default: %u)"),
@@ -384,7 +395,9 @@ QT_TRANSLATE_NOOP("guapcoin-core", "Randomly drop 1 of every <n> network message
 QT_TRANSLATE_NOOP("guapcoin-core", "Randomly fuzz 1 of every <n> network messages"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Rebuild block chain index from current blk000??.dat files"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Recalculating GUAP supply..."),
-QT_TRANSLATE_NOOP("guapcoin-core", "Reindex the %s money supply statistics"),
+QT_TRANSLATE_NOOP("guapcoin-core", "Reindex the %s and z%s money supply statistics"),
+QT_TRANSLATE_NOOP("guapcoin-core", "Reindexing zerocoin database..."),
+QT_TRANSLATE_NOOP("guapcoin-core", "Reindexing zerocoin failed"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Relay and mine data carrier transactions (default: %u)"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Relay non-P2SH multisig (default: %u)"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Rescan the block chain for missing wallet transactions"),
@@ -404,6 +417,7 @@ QT_TRANSLATE_NOOP("guapcoin-core", "Set the number of threads to service RPC cal
 QT_TRANSLATE_NOOP("guapcoin-core", "Sets the DB_PRIVATE flag in the wallet db environment (default: %u)"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Show all debugging options (usage: --help -help-debug)"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Shrink debug.log file on client startup (default: 1 when no -debug)"),
+QT_TRANSLATE_NOOP("guapcoin-core", "Shutdown requested over the txs scan. Exiting."),
 QT_TRANSLATE_NOOP("guapcoin-core", "Signing transaction failed"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Specify configuration file (default: %s)"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Specify connection timeout in milliseconds (minimum: 1, default: %d)"),
@@ -412,9 +426,9 @@ QT_TRANSLATE_NOOP("guapcoin-core", "Specify masternode configuration file (defau
 QT_TRANSLATE_NOOP("guapcoin-core", "Specify pid file (default: %s)"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Specify wallet file (within data directory)"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Specify your own public address"),
+QT_TRANSLATE_NOOP("guapcoin-core", "Specify zk params directory (default: %s)"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Spend Valid"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Spend unconfirmed change when sending transactions (default: %u)"),
-QT_TRANSLATE_NOOP("guapcoin-core", "Staking options:"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Stop running after importing blocks from disk (default: %u)"),
 QT_TRANSLATE_NOOP("guapcoin-core", "SwiftX options:"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Synchronization failed"),
@@ -423,6 +437,7 @@ QT_TRANSLATE_NOOP("guapcoin-core", "Synchronizing budgets..."),
 QT_TRANSLATE_NOOP("guapcoin-core", "Synchronizing masternode winners..."),
 QT_TRANSLATE_NOOP("guapcoin-core", "Synchronizing masternodes..."),
 QT_TRANSLATE_NOOP("guapcoin-core", "Synchronizing sporks..."),
+QT_TRANSLATE_NOOP("guapcoin-core", "Syncing zGUAP wallet..."),
 QT_TRANSLATE_NOOP("guapcoin-core", "The threshold value cannot be less than %s"),
 QT_TRANSLATE_NOOP("guapcoin-core", "This help message"),
 QT_TRANSLATE_NOOP("guapcoin-core", "This is experimental software."),
@@ -444,23 +459,23 @@ QT_TRANSLATE_NOOP("guapcoin-core", "Trying to spend an already spent serial #, t
 QT_TRANSLATE_NOOP("guapcoin-core", "Unable to bind to %s on this computer (bind returned error %s)"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Unable to find transaction containing mint %s"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Unable to find transaction containing mint, txHash: %s"),
-QT_TRANSLATE_NOOP("guapcoin-core", "Unable to generate initial key"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Unable to generate keys"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Unable to sign spork message, wrong key?"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Unable to start HTTP server. See debug log for details."),
 QT_TRANSLATE_NOOP("guapcoin-core", "Unknown network specified in -onlynet: '%s'"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Unsupported logging category %s=%s."),
 QT_TRANSLATE_NOOP("guapcoin-core", "Upgrade wallet to latest format"),
+QT_TRANSLATE_NOOP("guapcoin-core", "Upgrading coins database..."),
 QT_TRANSLATE_NOOP("guapcoin-core", "Use UPnP to map the listening port (default: %u)"),
-QT_TRANSLATE_NOOP("guapcoin-core", "Use UPnP to map the listening port (default: 1 when listening)"),
-QT_TRANSLATE_NOOP("guapcoin-core", "Use a custom max chain reorganization depth (default: %u)"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Use block spam filter (default: %u)"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Use the test network"),
 QT_TRANSLATE_NOOP("guapcoin-core", "User Agent comment (%s) contains unsafe characters."),
 QT_TRANSLATE_NOOP("guapcoin-core", "Username for JSON-RPC connections"),
+QT_TRANSLATE_NOOP("guapcoin-core", "Value is below the smallest available denomination (= 1) of zGUAP"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Verifying blocks..."),
 QT_TRANSLATE_NOOP("guapcoin-core", "Verifying wallet..."),
 QT_TRANSLATE_NOOP("guapcoin-core", "Wallet %s resides outside data directory %s"),
+QT_TRANSLATE_NOOP("guapcoin-core", "Wallet debugging/testing options:"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Wallet needed to be rewritten: restart Guapcoin to complete"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Wallet options:"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Wallet window title"),
@@ -468,10 +483,12 @@ QT_TRANSLATE_NOOP("guapcoin-core", "Warning"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Warning: This version is obsolete, upgrade required!"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Warning: Unsupported argument -benchmark ignored, use -debug=bench."),
 QT_TRANSLATE_NOOP("guapcoin-core", "Warning: Unsupported argument -debugnet ignored, use -debug=net."),
+QT_TRANSLATE_NOOP("guapcoin-core", "You don't have enough Zerocoins in your wallet"),
 QT_TRANSLATE_NOOP("guapcoin-core", "You need to rebuild the database using -reindex to change -txindex"),
 QT_TRANSLATE_NOOP("guapcoin-core", "Zapping all transactions from wallet..."),
 QT_TRANSLATE_NOOP("guapcoin-core", "ZeroMQ notification options:"),
+QT_TRANSLATE_NOOP("guapcoin-core", "Zerocoin minting available only on regtest"),
+QT_TRANSLATE_NOOP("guapcoin-core", "Zerocoin options:"),
 QT_TRANSLATE_NOOP("guapcoin-core", "isValid(): Invalid -proxy address or hostname: '%s'"),
 QT_TRANSLATE_NOOP("guapcoin-core", "on startup"),
-QT_TRANSLATE_NOOP("guapcoin-core", "wallet.dat corrupt, salvage failed"),
 };

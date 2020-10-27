@@ -49,8 +49,8 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
             nActualSpacing = pindexLast->GetBlockTime() - pindexLast->pprev->GetBlockTime();
         if (nActualSpacing < 0)
             nActualSpacing = 1;
-        if (fTimeV2 && nActualSpacing > consensus.nTargetSpacing*10)
-            nActualSpacing = consensus.nTargetSpacing*10;
+		if (fTimeV2 && nActualSpacing > consensus.nTargetSpacing * 10)
+			nActualSpacing = consensus.nTargetSpacing * 10;
 
         // ppcoin: target change every block
         // ppcoin: retarget with exponential moving toward target spacing

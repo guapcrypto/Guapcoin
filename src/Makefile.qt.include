@@ -95,7 +95,6 @@ QT_MOC_CPP = \
   qt/moc_recentrequeststablemodel.cpp \
   qt/moc_rpcconsole.cpp \
   qt/moc_trafficgraphwidget.cpp \
-  qt/moc_transactiondesc.cpp \
   qt/moc_transactionfilterproxy.cpp \
   qt/moc_transactiontablemodel.cpp \
   qt/moc_utilitydialog.cpp \
@@ -207,7 +206,6 @@ BITCOIN_QT_H = \
   qt/recentrequeststablemodel.h \
   qt/rpcconsole.h \
   qt/trafficgraphwidget.h \
-  qt/transactiondesc.h \
   qt/transactionfilterproxy.h \
   qt/transactionrecord.h \
   qt/transactiontablemodel.h \
@@ -319,21 +317,20 @@ RES_ICONS = \
   qt/guapcoin/res/img/ic-nav-master-hover.png \
   qt/guapcoin/res/img/ic-watch-password.png \
   qt/guapcoin/res/img/bg-welcome.jpg \
-  qt/guapcoin/res/img/bg-welcome@2x.jpg \
-  qt/guapcoin/res/img/bg-welcome@3x.jpg \
   qt/guapcoin/res/img/bg-welcome.png \
   qt/guapcoin/res/img/ic-check-staking.png \
   qt/guapcoin/res/img/ic-nav-master.png \
+  qt/guapcoin/res/img/img-dashboard-banner.jpg \
   qt/guapcoin/res/img/btn-radio-active.png \
   qt/guapcoin/res/img/ic-check-sync-off.png \
   qt/guapcoin/res/img/ic-nav-privacy-active.png \
   qt/guapcoin/res/img/img-empty-contacts.png \
   qt/guapcoin/res/img/btn-radio-off.png \
-  qt/guapcoin/res/img/ic-check-sync.png \
   qt/guapcoin/res/img/ic-nav-privacy-hover.png \
   qt/guapcoin/res/img/img-empty-dark-contacts.png \
   qt/guapcoin/res/img/ic-contact-arrow-down.png \
   qt/guapcoin/res/img/ic-contact-arrow-down-white.png \
+  qt/guapcoin/res/img/ic-check-sync.png \
   qt/guapcoin/res/img/ic-check-faq.png \
   qt/guapcoin/res/img/ic-nav-privacy.png \
   qt/guapcoin/res/img/img-empty-dark-error.png \
@@ -399,6 +396,7 @@ RES_ICONS = \
   qt/guapcoin/res/img/ic-connect.png \
   qt/guapcoin/res/img/ic-submenu-lock.png \
   qt/guapcoin/res/img/img-logo-guapcoin@3x.png \
+  qt/guapcoin/res/img/img-logo-guapcoin.png \
   qt/guapcoin/res/img/ic-arrow-right-white.png \
   qt/guapcoin/res/img/ic-arrow-left-white.png \
   qt/guapcoin/res/img/ic-arrow-left.png \
@@ -414,6 +412,7 @@ RES_ICONS = \
   qt/guapcoin/res/img/ic-arrow-white-left.png \
   qt/guapcoin/res/img/ic-exit.png \
   qt/guapcoin/res/img/ic-switch-liliac-on.png \
+  qt/guapcoin/res/img/img-nav-logo.png \
   qt/guapcoin/res/img/ic-arrow-white-right.png \
   qt/guapcoin/res/img/ic-expand.png \
   qt/guapcoin/res/img/ic-switch-off.png \
@@ -523,7 +522,6 @@ BITCOIN_QT_WALLET_CPP = \
   qt/paymentrequestplus.cpp \
   qt/paymentserver.cpp \
   qt/recentrequeststablemodel.cpp \
-  qt/transactiondesc.cpp \
   qt/transactionfilterproxy.cpp \
   qt/transactionrecord.cpp \
   qt/transactiontablemodel.cpp \
@@ -653,7 +651,7 @@ endif
 if ENABLE_ZMQ
 qt_guapcoin_qt_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
 endif
-qt_guapcoin_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBLEVELDB_SSE42) $(LIBMEMENV) \
+qt_guapcoin_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBSAPLING) $(LIBRUSTZCASH) $(LIBZCASH_LIBS) $(LIBLEVELDB) $(LIBLEVELDB_SSE42) $(LIBMEMENV) \
   $(BOOST_LIBS) $(QT_LIBS) $(QT_DBUS_LIBS) $(QR_LIBS) $(PROTOBUF_LIBS) $(SVG_LIBS) $(CHARTS_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(LIBSECP256K1) \
   $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
 qt_guapcoin_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)

@@ -5,21 +5,21 @@
 
 set -e
 
-BCUSER="guapcoin"
-BCHOME="/var/lib/guapcoin"
+GUAPUSER="guapcoin"
+GUAPHOME="/var/lib/guapcoin"
 
 if [ "$1" = "configure" ]; then
 	# Add guapcoin user/group - this will gracefully abort if the user already exists.
 	# A homedir is never created.
 	set +e
-	adduser --system --home "${BCHOME}" --no-create-home --group "${BCUSER}" 2>/dev/null
+	adduser --system --home "${GUAPHOME}" --no-create-home --group "${GUAPUSER}" 2>/dev/null
 	set -e
 
 	# If the homedir does not already exist, create it with proper
 	# ownership and permissions.
-	if [ ! -d "${BCHOME}" ]; then
-		mkdir -m 0750 -p "${BCHOME}"
-		chown "${BCUSER}:${BCUSER}" "${BCHOME}"
+	if [ ! -d "${GUAPHOME}" ]; then
+		mkdir -m 0750 -p "${GUAPHOME}"
+		chown "${GUAPUSER}:${GUAPUSER}" "${GUAPHOME}"
 	fi
 fi
 

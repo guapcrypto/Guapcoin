@@ -1,4 +1,3 @@
-// Copyright (c) 2019-2020 The PIVX developers
 // Copyright (c) 2019-2020 The Guapcoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -213,7 +212,7 @@ bool MasterNodeWizardDialog::createMN()
         SendCoinsRecipient sendCoinsRecipient(
                 QString::fromStdString(dest.ToString()),
                 QString::fromStdString(alias),
-                GetMNCollateral(0) * COIN,
+                GetMNCollateral() * COIN,
                 "");
 
         // Send the 10 tx to one of your address
@@ -263,7 +262,7 @@ bool MasterNodeWizardDialog::createMN()
         int indexOut = -1;
         for (int i=0; i < (int)walletTx->vout.size(); i++) {
             CTxOut& out = walletTx->vout[i];
-            if (out.nValue == GetMNCollateral(chainActive.Height()) * COIN) {
+            if (out.nValue == GetMNCollateral() * COIN) {
                 indexOut = i;
                 break;
             }
@@ -279,7 +278,8 @@ bool MasterNodeWizardDialog::createMN()
     // Update the conf file
     std::string strConfFile = "masternode.conf";
     std::string strDataDir = GetDataDir().string();
-    if (strConfFile != fs::basename(strConfFile) + fs::extension(strConfFile)) {
+    fs::path conf_file_path(strConfFile);
+    if (strConfFile != conf_file_path.filename().string()) {
         throw std::runtime_error(strprintf(_("masternode.conf %s resides outside data directory %s"), strConfFile, strDataDir));
     }
 
@@ -343,22 +343,19 @@ bool MasterNodeWizardDialog::createMN()
         ipAddress = "["+ipAddress+"]";
     }
 
-    fs::path pathConfigFile("masternode_temp.conf");
-    if (!pathConfigFile.is_complete()) pathConfigFile = GetDataDir() / pathConfigFile;
+    fs::path pathConfigFile = AbsPathForConfigVal(fs::path("masternode_temp.conf"));
     FILE* configFile = fopen(pathConfigFile.string().c_str(), "w");
     lineCopy += alias+" "+ipAddress+":"+port+" "+mnKeyString+" "+txID+" "+indexOutStr+"\n";
     fwrite(lineCopy.c_str(), std::strlen(lineCopy.c_str()), 1, configFile);
     fclose(configFile);
 
-    fs::path pathOldConfFile("old_masternode.conf");
-    if (!pathOldConfFile.is_complete()) pathOldConfFile = GetDataDir() / pathOldConfFile;
+    fs::path pathOldConfFile = AbsPathForConfigVal(fs::path("old_masternode.conf"));
     if (fs::exists(pathOldConfFile)) {
         fs::remove(pathOldConfFile);
     }
     rename(pathMasternodeConfigFile, pathOldConfFile);
 
-    fs::path pathNewConfFile("masternode.conf");
-    if (!pathNewConfFile.is_complete()) pathNewConfFile = GetDataDir() / pathNewConfFile;
+    fs::path pathNewConfFile = AbsPathForConfigVal(fs::path("masternode.conf"));
     rename(pathConfigFile, pathNewConfFile);
 
     mnEntry = masternodeConfig.add(alias, ipAddress+":"+port, mnKeyString, txID, indexOutStr);

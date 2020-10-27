@@ -1,4 +1,3 @@
-// Copyright (c) 2019-2020 The PIVX developers
 // Copyright (c) 2019-2020 The Guapcoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -648,8 +647,8 @@ void SendWidget::onContactMultiClicked()
             inform(tr("Invalid address"));
             return;
         }
-        CTxDestination guapcoinAdd = DecodeDestination(address.toStdString());
-        if (walletModel->isMine(guapcoinAdd)) {
+        CTxDestination guapAdd = DecodeDestination(address.toStdString());
+        if (walletModel->isMine(guapAdd)) {
             inform(tr("Cannot store your own address as contact"));
             return;
         }
@@ -669,7 +668,7 @@ void SendWidget::onContactMultiClicked()
             if (label == dialog->getLabel()) {
                 return;
             }
-            if (walletModel->updateAddressBookLabels(guapcoinAdd, dialog->getLabel().toStdString(),
+            if (walletModel->updateAddressBookLabels(guapAdd, dialog->getLabel().toStdString(),
                     AddressBook::AddressBookPurpose::SEND)) {
                 inform(tr("New Contact Stored"));
             } else {

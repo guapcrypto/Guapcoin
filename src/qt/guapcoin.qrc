@@ -18,7 +18,6 @@
         <file alias="about">res/images/about.png</file>
     </qresource>
     <qresource prefix="/">
-        <file alias="bg-splash">guapcoin/res/img/bg-splash.png</file>
         <file alias="bg-splash-png">guapcoin/res/img/bg-splash.png</file>
         <file alias="img-logo-guapcoin-png">guapcoin/res/img/img-logo-guapcoin.png</file>
         <file alias="img-logo-guapcoin-2x">guapcoin/res/img/img-logo-guapcoin@2x.png</file>
@@ -180,9 +179,8 @@
         <file alias="ic-contact-arrow-down-white">guapcoin/res/img/ic-contact-arrow-down-white.png</file>
         <file alias="ic-arrow-drop-down-purple">guapcoin/res/img/ic-arrow-drop-down-purple.png</file>
         <file alias="ic-arrow-drop-up-purple">guapcoin/res/img/ic-arrow-drop-up-purple.png</file>
-        <file alias="bg-welcome-2x">guapcoin/res/img/bg-welcome@2x.jpg</file>
-        <file alias="bg-welcome-3x">guapcoin/res/img/bg-welcome@3x.jpg</file>
         <file alias="img-logo-guapcoin">guapcoin/res/img/img-logo-guapcoin.png</file>
+        <file alias="bg-welcome-container">guapcoin/res/img/bg-welcome-container.png</file>
         <file alias="bg-welcome">guapcoin/res/img/bg-welcome.png</file>
         <file alias="bg-welcome-container-png">guapcoin/res/img/bg-welcome-container.png</file>
         <file alias="bg-welcome-container-2x">guapcoin/res/img/bg-welcome-container@2x.png</file>

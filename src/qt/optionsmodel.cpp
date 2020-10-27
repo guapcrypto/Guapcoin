@@ -193,9 +193,6 @@ void OptionsModel::setDisplayDefaultOptions(QSettings& settings, bool reset)
     if (!SoftSetArg("-lang", settings.value("language").toString().toStdString()))
         addOverriddenOption("-lang");
 
-    if (settings.contains("nAnonymizeGuapcoinAmount") || reset)
-        SoftSetArg("-anonymizeguapcoinamount", settings.value("nAnonymizeGuapcoinAmount").toString().toStdString());
-
     if (!settings.contains("strThirdPartyTxUrls") || reset)
         settings.setValue("strThirdPartyTxUrls", "");
     strThirdPartyTxUrls = settings.value("strThirdPartyTxUrls", "").toString();

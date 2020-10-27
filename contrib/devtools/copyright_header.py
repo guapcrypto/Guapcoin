@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # Copyright (c) 2016-2018 The Bitcoin Core developers
-# Copyright (c) 2018-2019 The Guapcoin developers
+# Copyright (c) 2018-2019 The PIVX developers
+# Copyright (c) 2019-2020 The PIVX developers
+# Copyright (c) 2019-2020 The Guapcoin developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -22,6 +24,7 @@ EXCLUDE = [
     # other external copyrights:
     'src/tinyformat.h',
     'src/crypto/scrypt.cpp',
+    'test/functional/test_framework/bignum.py',
     # python init:
     '*__init__.py',
 ]
@@ -33,6 +36,7 @@ EXCLUDE_DIRS = [
     "src/leveldb/",
     "src/secp256k1/",
     "src/univalue/",
+    "src/crc32c",
 ]
 
 INCLUDE = ['*.h', '*.cpp', '*.cc', '*.c', '*.py']
@@ -118,6 +122,7 @@ EXPECTED_HOLDER_NAMES = [
     "The Dash developers\n",
     "The Dash Developers\n",
     "The Dash Core developers\n",
+    "The PIVX developers\n",
     "The Guapcoin developers\n",
     "The PPCoin developers\n",
     "The NovaCoin Developers",

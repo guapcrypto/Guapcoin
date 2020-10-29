@@ -92,12 +92,15 @@ boost::assign::map_list_of
 (583265, uint256("0xa69fae992d4fbff77af26fad6905f8600ac60c10c7a7c4efe38c5362ebc75a5f"))
 (605106, uint256("0x96b626e2c1a6872ce9d0895625ac742025979780fffd34154c03d0544cb02786"))
 (653180, uint256("0xb16c4ce3cc67f0b9e7c3b019e2a3c7a0196ad2f4c3acac6565294dbd67742b96"))
+(653458, uint256("0x5fceceecc09ffc6636a34d88b12c797385c5d346f755906b6dec897e8fe4febb"))
+(654299, uint256("0x7a466fd270e06a113dddf82ef7db37ab80829f73da48d53449979ee8e95a57e3"))
+(655807, uint256("0x8d55ca98f8a1c1c6d52eb990c758690ccc4a6997fd2aa272ebbb980de22b96ea"))
 ;
 
 static const Checkpoints::CCheckpointData data = {
 	&mapCheckpoints,
-	1603793490, // * UNIX timestamp of last checkpoint block
-	1349726,    // * total number of transactions between genesis and last checkpoint
+	1603955310, // * UNIX timestamp of last checkpoint block
+	1355440,    // * total number of transactions between genesis and last checkpoint
 				//   (the tx=... number in the UpdateTip debug.log lines)
 	2000        // * estimated number of transactions per day after checkpoint
 };

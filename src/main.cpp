@@ -1936,7 +1936,8 @@ int ApplyTxInUndo(Coin&& undo, CCoinsViewCache& view, const COutPoint& out)
             return DISCONNECT_FAILED; // adding output for transaction without known metadata
         }
     }
-    view.AddCoin(out, std::move(undo), false);
+
+    view.AddCoin(out, std::move(undo), undo.fCoinBase);
 
     return fClean ? DISCONNECT_OK : DISCONNECT_UNCLEAN;
 }

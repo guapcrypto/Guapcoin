@@ -136,7 +136,7 @@ SettingsWidget::SettingsWidget(GuapcoinGUI* parent) :
 
     // Help
     connect(ui->pushButtonHelp, &QPushButton::clicked, this, &SettingsWidget::onHelpClicked);
-    connect(ui->pushButtonHelp1, &QPushButton::clicked, window, &GuapcoinGUI::openFAQ);
+    connect(ui->pushButtonHelp1, &QPushButton::clicked, [this]() {window->openFAQ(); });
     connect(ui->pushButtonHelp2, &QPushButton::clicked, this, &SettingsWidget::onAboutClicked);
 
     // Get restart command-line parameters and handle restart
@@ -165,7 +165,9 @@ SettingsWidget::SettingsWidget(GuapcoinGUI* parent) :
     connect(settingsWalletOptionsWidget, &SettingsWalletOptionsWidget::saveSettings, this, &SettingsWidget::onSaveOptionsClicked);
     connect(settingsWalletOptionsWidget, &SettingsWalletOptionsWidget::discardSettings, this, &SettingsWidget::onDiscardChanges);
 
-    /* Widget-to-option mapper */
+	connect(settingsConsoleWidget, &SettingsConsoleWidget::message, this, &SettingsWidget::message);
+
+	/* Widget-to-option mapper */
     mapper = new QDataWidgetMapper(this);
     mapper->setSubmitPolicy(QDataWidgetMapper::ManualSubmit);
     mapper->setOrientation(Qt::Vertical);

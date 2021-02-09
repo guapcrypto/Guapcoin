@@ -18,14 +18,18 @@ class CBlockIndex;
 class COutput;
 class CReserveKey;
 class CScript;
+#ifdef ENABLE_WALLET
 class CWallet;
+#endif
 
 static const bool DEFAULT_PRINTPRIORITY = false;
 
 struct CBlockTemplate;
 
+#ifdef ENABLE_WALLET
 /** Generate a new block, without valid proof-of-work */
 CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, bool fProofOfStake, std::vector<COutput>* availableCoins = nullptr);
+#endif // ENABLE_WALLET
 /** Modify the extranonce in a block */
 void IncrementExtraNonce(CBlock* pblock, CBlockIndex* pindexPrev, unsigned int& nExtraNonce);
 /** Check mined block */

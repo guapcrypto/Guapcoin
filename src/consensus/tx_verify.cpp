@@ -52,7 +52,7 @@ unsigned int GetP2SHSigOpCount(const CTransaction& tx, const CCoinsViewCache& in
     return nSigOps;
 }
 
-bool CheckTransaction(const CTransaction& tx, CValidationState& state, bool fColdStakingActive)
+bool CheckTransaction(const CTransaction& tx, CValidationState& state, bool checkInputs, bool fColdStakingActive)
 {
     // Basic checks that don't depend on any context
     if (tx.vin.empty())
@@ -87,6 +87,19 @@ bool CheckTransaction(const CTransaction& tx, CValidationState& state, bool fCol
                 return state.DoS(100, false, REJECT_INVALID, "cold-stake-vout-toosmall");
         }
     }
+
+	if (checkInputs) {
+		std::set<COutPoint> vInOutPoints;
+
+		for (const CTxIn& txin : tx.vin) {
+			// Check for duplicate inputs
+			if (vInOutPoints.count(txin.prevout)) {
+				return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-duplicate");
+			}
+			vInOutPoints.insert(txin.prevout);
+		}
+	}
+
 
     if (tx.IsCoinBase()) {
         if (tx.vin[0].scriptSig.size() < 2 || tx.vin[0].scriptSig.size() > 150)

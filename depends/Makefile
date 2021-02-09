@@ -9,7 +9,7 @@ NO_WALLET ?=
 NO_ZMQ ?=
 NO_UPNP ?=
 NO_RUST ?=
-FALLBACK_DOWNLOAD_PATH ?= https://depends.guapcoin.org
+FALLBACK_DOWNLOAD_PATH ?=  https://download.z.cash/depends-sources
 
 BUILD = $(shell ./config.guess)
 HOST ?= $(BUILD)

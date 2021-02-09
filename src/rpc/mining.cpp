@@ -21,7 +21,7 @@
 #ifdef ENABLE_WALLET
 #include "wallet/db.h"
 #include "wallet/wallet.h"
-#endif
+#endif // ENABLE_WALLET
 
 #include <stdint.h>
 
@@ -558,6 +558,7 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
             pblocktemplate = NULL;
         }
         CScript scriptDummy = CScript() << OP_TRUE;
+
         pblocktemplate = CreateNewBlock(scriptDummy, pwalletMain, false);
         if (!pblocktemplate)
             throw JSONRPCError(RPC_OUT_OF_MEMORY, "Out of memory");

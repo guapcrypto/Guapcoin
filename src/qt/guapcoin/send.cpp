@@ -643,11 +643,13 @@ void SendWidget::onContactMultiClicked()
             inform(tr("Address field is empty"));
             return;
         }
-        if (!walletModel->validateAddress(address)) {
+		bool isStakingAddr = false;
+		auto guapAdd = DecodeDestination(address.toStdString(), isStakingAddr);
+
+		if (!IsValidDestination(guapAdd) || isStakingAddr) {
             inform(tr("Invalid address"));
             return;
         }
-        CTxDestination guapAdd = DecodeDestination(address.toStdString());
         if (walletModel->isMine(guapAdd)) {
             inform(tr("Cannot store your own address as contact"));
             return;

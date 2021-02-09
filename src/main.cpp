@@ -854,7 +854,7 @@ bool AcceptToMemoryPoolWorker(CTxMemPool& pool, CValidationState &state, const C
     // Check transaction
     int chainHeight = chainActive.Height();
     bool fColdStakingActive = sporkManager.IsSporkActive(SPORK_17_COLDSTAKING_ENFORCEMENT);
-    if (!CheckTransaction(tx, state, fColdStakingActive))
+    if (!CheckTransaction(tx, state, true, fColdStakingActive))
         return error("%s : transaction checks for %s failed with %s", __func__, tx.GetHash().ToString(), FormatStateMessage(state));
 
     // Coinbase is only valid in a block, not as a loose transaction
@@ -1111,7 +1111,12 @@ bool AcceptableInputs(CTxMemPool& pool, CValidationState& state, const CTransact
     const int chainHeight = chainActive.Height();
     const Consensus::Params& consensus = Params().GetConsensus();
 
-    if (!CheckTransaction(tx, state))
+	bool checkInputs = true;
+	if (chainHeight <= 741730) {
+		checkInputs = false;
+	}
+
+    if (!CheckTransaction(tx, state, checkInputs))
         return error("%s : transaction checks for %s failed with %s", __func__, tx.GetHash().ToString(), FormatStateMessage(state));
 
     // Coinbase is only valid in a block, not as a loose transaction
@@ -3273,8 +3278,12 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
     // Check transactions
     // TODO: Check if this is ok... blockHeight is always the tip or should we look for the prevHash and get the height?
     int blockHeight = chainActive.Height() + 1;
+	bool checkInputs = true;
+	if (blockHeight <= 741730) {
+		checkInputs = false;
+	}
     for (const CTransaction& tx : block.vtx) {
-        if (!CheckTransaction(tx, state, fColdStakingActive))
+        if (!CheckTransaction(tx, state, checkInputs, fColdStakingActive))
             return state.Invalid(false, state.GetRejectCode(), state.GetRejectReason(),
                                              strprintf("Transaction check failed (tx hash %s) %s", tx.GetHash().ToString(), state.GetDebugMessage()));
     }

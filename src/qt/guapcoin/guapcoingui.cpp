@@ -16,7 +16,6 @@
 #include "guiinterface.h"
 #include "qt/guapcoin/qtutils.h"
 #include "qt/guapcoin/defaultdialog.h"
-#include "qt/guapcoin/settings/settingsfaqwidget.h"
 
 #include "init.h"
 #include "util.h"
@@ -587,11 +586,11 @@ int GuapcoinGUI::getNavWidth()
     return this->navMenu->width();
 }
 
-void GuapcoinGUI::openFAQ(int section)
+void GuapcoinGUI::openFAQ(SettingsFaqWidget::Section section)
 {
     showHide(true);
     SettingsFaqWidget* dialog = new SettingsFaqWidget(this);
-    if (section > 0) dialog->setSection(section);
+	dialog->setSection(section);
     openDialogWithOpaqueBackgroundFullScreen(dialog, this);
     dialog->deleteLater();
 }

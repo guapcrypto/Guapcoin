@@ -119,7 +119,7 @@ bool CreateCoinbaseTx(CBlock* pblock, const CScript& scriptPubKeyIn, CBlockIndex
     pblock->vtx.emplace_back(txNew);
     return true;
 }
-
+#ifdef ENABLE_WALLET
 bool SolveProofOfStake(CBlock* pblock, CBlockIndex* pindexPrev, CWallet* pwallet, std::vector<COutput>* availableCoins)
 {
     boost::this_thread::interruption_point();
@@ -403,6 +403,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
 
     return pblocktemplate.release();
 }
+#endif // ENABLE_WALLET
 
 void IncrementExtraNonce(CBlock* pblock, CBlockIndex* pindexPrev, unsigned int& nExtraNonce)
 {

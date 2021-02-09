@@ -2765,7 +2765,7 @@ std::string CWallet::CommitResult::ToString() const
         case CWallet::CommitStatus::OK:
             return _("No error");
         case CWallet::CommitStatus::Abandoned:
-            strErrRet += _("Transaction canceled.");
+            strErrRet += _("Transaction cancelled.");
             break;
         case CWallet::CommitStatus::NotAccepted:
             strErrRet += strprintf(_("WARNING: The transaction has been signed and recorded, so the wallet will try to re-send it. "

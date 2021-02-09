@@ -203,8 +203,8 @@ void DashboardWidget::loadWalletModel()
 			ui->comboBoxSort->setVisible(false);
 		}
 
-		connect(ui->pushImgEmpty, &QPushButton::clicked, window, &GuapcoinGUI::openFAQ);
-		connect(ui->btnHowTo, &QPushButton::clicked, window, &GuapcoinGUI::openFAQ);
+		connect(ui->pushImgEmpty, &QPushButton::clicked, [this]() { window->openFAQ(); });
+		connect(ui->btnHowTo, &QPushButton::clicked, [this]() {window->openFAQ(); });
 		connect(txModel, &TransactionTableModel::txArrived, this, &DashboardWidget::onTxArrived);
 
 		// Notification pop-up for new transaction

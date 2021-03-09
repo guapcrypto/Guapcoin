@@ -195,26 +195,20 @@ public:
 		nDefaultPort = 9633;
 
 		// Note that of those with the service bits flag, most only support a subset of possible options
-		vSeeds.push_back(CDNSSeedData("159.65.221.180", "159.65.221.180", true));
-		vSeeds.push_back(CDNSSeedData("45.76.61.148", "45.76.61.148", true));
-		vSeeds.push_back(CDNSSeedData("2001:19f0:5401:41f:5400:02ff:feab:b408", "2001:19f0:5401:41f:5400:02ff:feab:b408", true));
-		vSeeds.push_back(CDNSSeedData("209.250.250.121", "209.250.250.121", true));
-		vSeeds.push_back(CDNSSeedData("2001:19f0:5001:331b:5400:02ff:fea5:3f49", "2001:19f0:5001:331b:5400:02ff:fea5:3f49", true));
-		vSeeds.push_back(CDNSSeedData("136.244.112.117", "136.244.112.117", true));
-		vSeeds.push_back(CDNSSeedData("2001:19f0:6801:fcb:5400:02ff:fea5:3f5f", "2001:19f0:6801:fcb:5400:02ff:fea5:3f5f", true));
-		vSeeds.push_back(CDNSSeedData("199.247.20.128", "199.247.20.128", true));
-		vSeeds.push_back(CDNSSeedData("2001:19f0:6c01:27ea:5400:02ff:fea5:3f65", "2001:19f0:6c01:27ea:5400:02ff:fea5:3f65", true));
-		vSeeds.push_back(CDNSSeedData("78.141.203.208", "78.141.203.208", true));
-		vSeeds.push_back(CDNSSeedData("2001:19f0:7400:8dfc:5400:02ff:fea5:3f81", "2001:19f0:7400:8dfc:5400:02ff:fea5:3f81", true));
-		vSeeds.push_back(CDNSSeedData("155.138.140.38", "155.138.140.38", true));
-		vSeeds.push_back(CDNSSeedData("2001:19f0:b001:7d:5400:02ff:fea5:3f89", "2001:19f0:b001:7d:5400:02ff:fea5:3f89", true));
-		vSeeds.push_back(CDNSSeedData("45.76.199.11", "45.76.199.11", true));
-		vSeeds.push_back(CDNSSeedData("2401:c080:1000:4290:5400:02ff:fea5:3f95", "2401:c080:1000:4290:5400:02ff:fea5:3f95", true));
-		vSeeds.push_back(CDNSSeedData("45.63.25.141", "45.63.25.141", true));
-		vSeeds.push_back(CDNSSeedData("2401:c080:1800:4a1a:5400:02ff:fea5:3f9c", "2401:c080:1800:4a1a:5400:02ff:fea5:3f9c", true));
-		vSeeds.push_back(CDNSSeedData("108.61.252.179", "108.61.252.179", true));
-		vSeeds.push_back(CDNSSeedData("155.138.219.187", "155.138.219.187", true));
-		vSeeds.push_back(CDNSSeedData("66.42.93.170", "66.42.93.170", true));
+		vSeeds.push_back(CDNSSeedData("dnsseeder2.guapcoin.org", "dnsseeder1.guapcoin.org", true));
+		vSeeds.push_back(CDNSSeedData("dnsseeder2.guapcoin.org", "dnsseeder2.guapcoin.org", true));
+		vSeeds.push_back(CDNSSeedData("seed1.guapcoin.org", "seed1.guapcoin.org", true));
+		vSeeds.push_back(CDNSSeedData("seed2.guapcoin.org", "seed2.guapcoin.org", true));
+		vSeeds.push_back(CDNSSeedData("seed3.guapcoin.org", "seed3.guapcoin.org", true));
+		vSeeds.push_back(CDNSSeedData("seed4.guapcoin.org", "seed4.guapcoin.org", true));
+		vSeeds.push_back(CDNSSeedData("seed5.guapcoin.org", "seed5.guapcoin.org", true));
+		vSeeds.push_back(CDNSSeedData("seed6.guapcoin.org", "seed6.guapcoin.org", true));
+		vSeeds.push_back(CDNSSeedData("seed7.guapcoin.org", "seed7.guapcoin.org", true));
+		vSeeds.push_back(CDNSSeedData("seed8.guapcoin.org", "seed8.guapcoin.org", true));
+		vSeeds.push_back(CDNSSeedData("seed9.guapcoin.org", "seed9.guapcoin.org", true));
+		vSeeds.push_back(CDNSSeedData("seed10.guapcoin.org", "seed10.guapcoin.org", true));
+		vSeeds.push_back(CDNSSeedData("guapexplorer.com", "guapexplorer.com", true));
+		vSeeds.push_back(CDNSSeedData("guapcoinexplorer.com", "guapcoinexplorer.com", true));
 
 
 		base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 38);

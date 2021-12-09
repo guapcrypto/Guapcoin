@@ -526,12 +526,13 @@
                            Guapcoin is a form of digital online money using blockchain technology
                            that can be easily transferred globally, instantly, and with near
                            zero fees.  Guapcoin incorporates market leading security &amp;
-                           privacy and is also the PoS (Proof of Stake) Cryptocurrency.
+                           privacy and is also the first PoS (Proof of Stake) Cryptocurrency
+                           to implement Sapling(SHIELD), a zk-SNARKs based privacy protocol.
                            &lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;
                            Guapcoin utilizes a Proof of Stake (PoS) consensus system algorithm,
                            allowing all owners of Guapcoin to participate in earning block rewards
                            while securing the network with full node wallets, as well as to
-                           run Masternodes.
+                           run Masternodes to create and vote on proposals.
                            &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
                          </string>
                         </property>
@@ -816,12 +817,11 @@
                         <property name="text">
                          <string>
                            &lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;
-                           We have support channels in most of our official chat groups, for example
-                           &lt;a style='color: #b07d00' href='https://discord.gg/ndQVgtv'&gt;
-                           #support in our Discord&lt;/a&gt;.
-                           You can also write us at
-                           &lt;a style='color: #b07d00' href='http://www.guapcoin.org/discussion'&gt;
-                           our support site&lt;/a&gt;.
+                           For Support you can contact our
+                           &lt;a style='color: #b07d00' href='https://www.guaptalk.org'&gt;
+                           Guaptalk Forum&lt;/a&gt; OR our
+                           &lt;a style='color: #b07d00' href='https://t.me/joinchat/T5pariFtRgCXLzPF'&gt;
+                           Telegram Channel&lt;/a&gt;.
                            &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
                          </string>
                         </property>
@@ -915,14 +915,15 @@
                         <property name="text">
                          <string>
                            &lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;
-                           A masternode is a computer running a full node Guapcoin wallet with a
+                           A masternode is a computer running a full node Guapcoin core wallet with a
                            requirement of 10,000 GUAP secured collateral to provide extra services
                            to the network and in return, receive a portion of the block reward
                            regularly.  These services include:
                            &lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;
 
                            &lt;ul&gt;
-                           &lt;li&gt;Instant transactions (SwiftX)&lt;/li&gt;
+                           &lt;li&gt;A decentralized governance (Proposal Voting)&lt;/li&gt;
+                           &lt;li&gt;A decentralized budgeting system (Treasury)&lt;/li&gt;
                            &lt;li&gt;Validation of transactions within each block&lt;/li&gt;
                            &lt;li&gt;Act as an additional full node in the network&lt;/li&gt;
                            &lt;/ul&gt;
